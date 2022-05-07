@@ -33,7 +33,7 @@ const MapWrapper = () => {
       center: myLatlng,
       scrollwheel: false,
       zoomControl: true,
-      styles: [
+      /*styles: [
         {
           featureType: "water",
           stylers: [
@@ -163,7 +163,7 @@ const MapWrapper = () => {
             },
           ],
         },
-      ],
+      ],*/
     };
 
     map = new google.maps.Map(map, mapOptions);
