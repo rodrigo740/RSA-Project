@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" creator="osrm" version="1.1">
+    <metadata>
+        <name>A 25</name>
+        <copyright author="OpenStreetMap contributors">
+            <license>http://www.openstreetmap.org/copyright</license>
+        </copyright>
+        <link href="http://map.project-osrm.org/?z=16&amp;center=40.644674%2C-8.654072&amp;loc=40.652920%2C-8.631048&amp;loc=40.643380%2C-8.659158&amp;hl=en&amp;alt=0&amp;srv=0">
+            <text>OpenStreetMap Routing with Open Source Routing Machine</text>
+        </link>
+        <time>2022-05-14T16:52:07.711Z</time>
+    </metadata>
+    <trk>
+        <trkseg>
+            <trkpt lat="40.65298" lon="-8.631" />
+            <trkpt lat="40.65308" lon="-8.63123" />
+            <trkpt lat="40.6535" lon="-8.63228" />
+            <trkpt lat="40.65388" lon="-8.63333" />
+            <trkpt lat="40.65411" lon="-8.63415" />
+            <trkpt lat="40.65428" lon="-8.63497" />
+            <trkpt lat="40.65438" lon="-8.63578" />
+            <trkpt lat="40.65443" lon="-8.63659" />
+            <trkpt lat="40.65442" lon="-8.63731" />
+            <trkpt lat="40.65435" lon="-8.63808" />
+            <trkpt lat="40.65425" lon="-8.63876" />
+            <trkpt lat="40.6541" lon="-8.63945" />
+            <trkpt lat="40.65392" lon="-8.64005" />
+            <trkpt lat="40.65371" lon="-8.64068" />
+            <trkpt lat="40.65347" lon="-8.64123" />
+            <trkpt lat="40.65308" lon="-8.64204" />
+            <trkpt lat="40.65268" lon="-8.64278" />
+            <trkpt lat="40.65194" lon="-8.64402" />
+            <trkpt lat="40.65132" lon="-8.64508" />
+            <trkpt lat="40.65109" lon="-8.64546" />
+            <trkpt lat="40.64995" lon="-8.64739" />
+            <trkpt lat="40.6491" lon="-8.64883" />
+            <trkpt lat="40.64803" lon="-8.65082" />
+            <trkpt lat="40.64655" lon="-8.65376" />
+            <trkpt lat="40.64588" lon="-8.65501" />
+            <trkpt lat="40.64519" lon="-8.65622" />
+            <trkpt lat="40.64442" lon="-8.65751" />
+            <trkpt lat="40.64363" lon="-8.65878" />
+            <trkpt lat="40.64337" lon="-8.65915" />
+            <trkpt lat="40.64337" lon="-8.65915" />
+        </trkseg>
+    </trk>
+</gpx>
