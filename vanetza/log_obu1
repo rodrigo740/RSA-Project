@@ -1,0 +1,1064 @@
+Attaching to vanetza_obu1_1
+[36mobu1_1  |[0m 1652552105: mosquitto version 2.0.11 starting
+[36mobu1_1  |[0m 1652552105: Config loaded from /etc/mosquitto/mosquitto.conf.
+[36mobu1_1  |[0m 1652552105: Opening ipv4 listen socket on port 1883.
+[36mobu1_1  |[0m 1652552105: mosquitto version 2.0.11 running
+[36mobu1_1  |[0m 1652552107: New connection from 192.168.98.1:48694 on port 1883.
+[36mobu1_1  |[0m 1652552107: New client connected from 192.168.98.1:48694 as auto-75161672-11E7-93B2-9723-AEC387E3EA32 (p2, c1, k60).
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cam
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cam_full
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/denm
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cpm
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/spatem
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/mapem
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/vam
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/vam_full
+[36mobu1_1  |[0m Starting
+[36mobu1_1  |[0m Starting runtime at 2022-May-14 18:15:08.712764
+[36mobu1_1  |[0m 6e:06:e0:03:00:02
+[36mobu1_1  |[0m Using MAC address: 6e:06:e0:03:00:02.
+[36mobu1_1  |[0m 1652552108: New connection from 127.0.0.1:33098 on port 1883.
+[36mobu1_1  |[0m 1652552108: New client connected from 127.0.0.1:33098 as obu_706 (p2, c1, k60).
+[36mobu1_1  |[0m mqtt.cpp: connected with server
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m Enable application 'cam'...
+[36mobu1_1  |[0m Enable application 'cpm'...
+[36mobu1_1  |[0m Enable application 'denm'...
+[36mobu1_1  |[0m Enable application 'mapem'...
+[36mobu1_1  |[0m Enable application 'spatem'...
+[36mobu1_1  |[0m Enable application 'vam'...
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m 1652552141: mosquitto version 2.0.11 starting
+[36mobu1_1  |[0m 1652552141: Config loaded from /etc/mosquitto/mosquitto.conf.
+[36mobu1_1  |[0m 1652552141: Opening ipv4 listen socket on port 1883.
+[36mobu1_1  |[0m 1652552141: mosquitto version 2.0.11 running
+[36mobu1_1  |[0m 1652552141: New connection from 192.168.98.1:48702 on port 1883.
+[36mobu1_1  |[0m 1652552141: New client connected from 192.168.98.1:48702 as auto-F4957D92-FF97-DC50-5C96-598596274338 (p2, c1, k60).
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cam
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cam_full
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/denm
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cpm
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/spatem
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/mapem
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/vam
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/vam_full
+[36mobu1_1  |[0m Starting
+[36mobu1_1  |[0m Starting runtime at 2022-May-14 18:15:44.275924
+[36mobu1_1  |[0m 6e:06:e0:03:00:02
+[36mobu1_1  |[0m Using MAC address: 6e:06:e0:03:00:02.
+[36mobu1_1  |[0m 1652552144: New connection from 127.0.0.1:33104 on port 1883.
+[36mobu1_1  |[0m 1652552144: New client connected from 127.0.0.1:33104 as obu_896 (p2, c1, k60).
+[36mobu1_1  |[0m mqtt.cpp: connected with server
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m Enable application 'cam'...
+[36mobu1_1  |[0m Enable application 'cpm'...
+[36mobu1_1  |[0m Enable application 'denm'...
+[36mobu1_1  |[0m Enable application 'mapem'...
+[36mobu1_1  |[0m Enable application 'spatem'...
+[36mobu1_1  |[0m Enable application 'vam'...
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m 1652552170: Client auto-F4957D92-FF97-DC50-5C96-598596274338 disconnected.
+[36mobu1_1  |[0m 1652552174: New connection from 192.168.98.1:48704 on port 1883.
+[36mobu1_1  |[0m 1652552174: New client connected from 192.168.98.1:48704 as auto-77113414-757C-7FD8-364B-DCB4FF7518A7 (p2, c1, k60).
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m 1652552318: New connection from 192.168.98.1:43877 on port 1883.
+[36mobu1_1  |[0m 1652552318: New client connected from 192.168.98.1:43877 as auto-9F0C291D-210A-171A-EDA0-E77B58F2DEA5 (p2, c1, k60).
+[36mobu1_1  |[0m 1652552327: Client auto-9F0C291D-210A-171A-EDA0-E77B58F2DEA5 closed its connection.
+[36mobu1_1  |[0m 1652552381: New connection from 192.168.98.1:36679 on port 1883.
+[36mobu1_1  |[0m 1652552381: New client connected from 192.168.98.1:36679 as auto-C93FB084-CB1F-FFD5-4213-1EC6AD5F59AC (p2, c1, k60).
+[36mobu1_1  |[0m 1652552386: Client auto-C93FB084-CB1F-FFD5-4213-1EC6AD5F59AC closed its connection.
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m 1652552429: New connection from 192.168.98.1:60599 on port 1883.
+[36mobu1_1  |[0m 1652552429: New client connected from 192.168.98.1:60599 as auto-B4EC7B26-83DB-960A-BEAF-B31DE7185A4B (p2, c1, k60).
+[36mobu1_1  |[0m 1652552434: Client auto-B4EC7B26-83DB-960A-BEAF-B31DE7185A4B closed its connection.
+[36mobu1_1  |[0m 1652552497: New connection from 192.168.98.1:56611 on port 1883.
+[36mobu1_1  |[0m 1652552497: New client connected from 192.168.98.1:56611 as auto-A7FAB1EC-AC9B-646E-F8A7-88E4B46A6A18 (p2, c1, k60).
+[36mobu1_1  |[0m 1652552503: Client auto-A7FAB1EC-AC9B-646E-F8A7-88E4B46A6A18 closed its connection.
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m 1652552883: Client auto-77113414-757C-7FD8-364B-DCB4FF7518A7 disconnected.
+[36mobu1_1  |[0m 1652552889: New connection from 192.168.98.1:35385 on port 1883.
+[36mobu1_1  |[0m 1652552889: New client connected from 192.168.98.1:35385 as auto-A81E7D35-8B7E-627E-485C-AD928104F582 (p2, c1, k60).
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":400000000,"length":100,"longitude":-80000000,"newInfo":true,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652552889.244},"timestamp":1652552889.244,"width":30,"yawRate":0}
+[36mobu1_1  |[0m 1652552895: Client auto-A81E7D35-8B7E-627E-485C-AD928104F582 closed its connection.
+[36mobu1_1  |[0m 1652552929: New connection from 192.168.98.1:48710 on port 1883.
+[36mobu1_1  |[0m 1652552929: New client connected from 192.168.98.1:48710 as auto-55C0F77B-0A31-C267-A211-5F0CC216E015 (p2, c1, k60).
+[36mobu1_1  |[0m 1652552956: Client auto-55C0F77B-0A31-C267-A211-5F0CC216E015 disconnected.
+[36mobu1_1  |[0m 1652553107: mosquitto version 2.0.11 starting
+[36mobu1_1  |[0m 1652553107: Config loaded from /etc/mosquitto/mosquitto.conf.
+[36mobu1_1  |[0m 1652553107: Opening ipv4 listen socket on port 1883.
+[36mobu1_1  |[0m 1652553107: mosquitto version 2.0.11 running
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cam
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cam_full
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/denm
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cpm
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/spatem
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/mapem
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/vam
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/vam_full
+[36mobu1_1  |[0m Starting
+[36mobu1_1  |[0m Starting runtime at 2022-May-14 18:31:50.456222
+[36mobu1_1  |[0m 6e:06:e0:03:00:02
+[36mobu1_1  |[0m Using MAC address: 6e:06:e0:03:00:02.
+[36mobu1_1  |[0m 1652553110: New connection from 127.0.0.1:33110 on port 1883.
+[36mobu1_1  |[0m 1652553110: New client connected from 127.0.0.1:33110 as obu_719 (p2, c1, k60).
+[36mobu1_1  |[0m mqtt.cpp: connected with server
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m Enable application 'cam'...
+[36mobu1_1  |[0m Enable application 'cpm'...
+[36mobu1_1  |[0m Enable application 'denm'...
+[36mobu1_1  |[0m Enable application 'mapem'...
+[36mobu1_1  |[0m Enable application 'spatem'...
+[36mobu1_1  |[0m Enable application 'vam'...
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m 1652553131: New connection from 192.168.98.1:39229 on port 1883.
+[36mobu1_1  |[0m 1652553131: New client connected from 192.168.98.1:39229 as auto-15214BC0-C815-6EC2-B3F1-E428876BC3A2 (p2, c1, k60).
+[36mobu1_1  |[0m 1652553137: Client auto-15214BC0-C815-6EC2-B3F1-E428876BC3A2 closed its connection.
+[36mobu1_1  |[0m 1652553306: mosquitto version 2.0.11 starting
+[36mobu1_1  |[0m 1652553306: Config loaded from /etc/mosquitto/mosquitto.conf.
+[36mobu1_1  |[0m 1652553306: Opening ipv4 listen socket on port 1883.
+[36mobu1_1  |[0m 1652553306: mosquitto version 2.0.11 running
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cam
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cam_full
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/denm
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cpm
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/spatem
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/mapem
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/vam
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/vam_full
+[36mobu1_1  |[0m Starting
+[36mobu1_1  |[0m Starting runtime at 2022-May-14 18:35:09.990666
+[36mobu1_1  |[0m 6e:06:e0:03:00:02
+[36mobu1_1  |[0m Using MAC address: 6e:06:e0:03:00:02.
+[36mobu1_1  |[0m mqtt.cpp: connected with server
+[36mobu1_1  |[0m 1652553310: New connection from 127.0.0.1:33112 on port 1883.
+[36mobu1_1  |[0m 1652553310: New client connected from 127.0.0.1:33112 as obu_828 (p2, c1, k60).
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m Enable application 'cam'...
+[36mobu1_1  |[0m Enable application 'cpm'...
+[36mobu1_1  |[0m Enable application 'denm'...
+[36mobu1_1  |[0m Enable application 'mapem'...
+[36mobu1_1  |[0m Enable application 'spatem'...
+[36mobu1_1  |[0m Enable application 'vam'...
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m 1652553315: New connection from 192.168.98.1:45001 on port 1883.
+[36mobu1_1  |[0m 1652553315: New client connected from 192.168.98.1:45001 as auto-22E36544-4C5B-1421-DDE9-E4789DE21E0D (p2, c1, k60).
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":400000000,"length":100,"longitude":-80000000,"newInfo":true,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652553315.238},"timestamp":1652553315.238,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":400000000,"length":100,"longitude":-80000000,"newInfo":true,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652553320.245},"timestamp":1652553320.244,"width":30,"yawRate":0}
+[36mobu1_1  |[0m 1652553320: Client auto-22E36544-4C5B-1421-DDE9-E4789DE21E0D closed its connection.
+[36mobu1_1  |[0m 1652553345: mosquitto version 2.0.11 starting
+[36mobu1_1  |[0m 1652553345: Config loaded from /etc/mosquitto/mosquitto.conf.
+[36mobu1_1  |[0m 1652553345: Opening ipv4 listen socket on port 1883.
+[36mobu1_1  |[0m 1652553345: mosquitto version 2.0.11 running
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cam
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cam_full
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/denm
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cpm
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/spatem
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/mapem
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/vam
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/vam_full
+[36mobu1_1  |[0m Starting
+[36mobu1_1  |[0m Starting runtime at 2022-May-14 18:35:48.514867
+[36mobu1_1  |[0m 6e:06:e0:03:00:02
+[36mobu1_1  |[0m Using MAC address: 6e:06:e0:03:00:02.
+[36mobu1_1  |[0m 1652553348: New connection from 127.0.0.1:33122 on port 1883.
+[36mobu1_1  |[0m 1652553348: New client connected from 127.0.0.1:33122 as obu_436 (p2, c1, k60).
+[36mobu1_1  |[0m mqtt.cpp: connected with server
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m Enable application 'cam'...
+[36mobu1_1  |[0m Enable application 'cpm'...
+[36mobu1_1  |[0m Enable application 'denm'...
+[36mobu1_1  |[0m mqtt.cpp: Enable application 'mapem'...
+[36mobu1_1  |[0m Enable application 'Subscription succeeded.spatem'...
+[36mobu1_1  |[0m 
+[36mobu1_1  |[0m Enable application 'mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m vam'...
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m 1652553358: New connection from 192.168.98.1:48712 on port 1883.
+[36mobu1_1  |[0m 1652553358: New client connected from 192.168.98.1:48712 as auto-2A569D58-EED7-D49A-772D-D1A4862E709E (p2, c1, k60).
+[36mobu1_1  |[0m 1652553369: New connection from 192.168.98.1:59301 on port 1883.
+[36mobu1_1  |[0m 1652553369: New client connected from 192.168.98.1:59301 as auto-E116008F-D8FB-9EC6-3B61-E727120FFBE0 (p2, c1, k60).
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":400000000,"length":100,"longitude":-80000000,"newInfo":true,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652553369.942},"timestamp":1652553369.942,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":400000000,"length":100,"longitude":-80000000,"newInfo":true,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652553374.951},"timestamp":1652553374.951,"width":30,"yawRate":0}
+[36mobu1_1  |[0m 1652553375: Client auto-E116008F-D8FB-9EC6-3B61-E727120FFBE0 closed its connection.
+[36mobu1_1  |[0m 1652553385: Client auto-2A569D58-EED7-D49A-772D-D1A4862E709E disconnected.
+[36mobu1_1  |[0m 1652562109: mosquitto version 2.0.11 starting
+[36mobu1_1  |[0m 1652562109: Config loaded from /etc/mosquitto/mosquitto.conf.
+[36mobu1_1  |[0m 1652562109: Opening ipv4 listen socket on port 1883.
+[36mobu1_1  |[0m 1652562109: mosquitto version 2.0.11 running
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cam
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cam_full
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/denm
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cpm
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/spatem
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/mapem
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/vam
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/vam_full
+[36mobu1_1  |[0m Starting
+[36mobu1_1  |[0m Starting runtime at 2022-May-14 21:01:52.800845
+[36mobu1_1  |[0m 6e:06:e0:03:00:02
+[36mobu1_1  |[0m Using MAC address: 6e:06:e0:03:00:02.
+[36mobu1_1  |[0m 1652562112: New connection from 127.0.0.1:33124 on port 1883.
+[36mobu1_1  |[0m 1652562112: New client connected from 127.0.0.1:33124 as obu_314 (p2, c1, k60).
+[36mobu1_1  |[0m mqtt.cpp: connected with server
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m Enable application 'cam'...
+[36mobu1_1  |[0m Enable application 'cpm'...
+[36mobu1_1  |[0m Enable application 'denm'...
+[36mobu1_1  |[0m Enable application 'mapem'...
+[36mobu1_1  |[0m Enable application 'spatem'...
+[36mobu1_1  |[0m Enable application 'vam'...
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m 1652562136: New connection from 192.168.98.1:47439 on port 1883.
+[36mobu1_1  |[0m 1652562136: New client connected from 192.168.98.1:47439 as auto-27D4265D-ED04-216A-C6FB-6B8D58C4185F (p2, c1, k60).
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":400000000,"length":100,"longitude":-80000000,"newInfo":true,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562136.101},"timestamp":1652562136.101,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":400000000,"length":100,"longitude":-80000000,"newInfo":true,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562141.105},"timestamp":1652562141.105,"width":30,"yawRate":0}
+[36mobu1_1  |[0m 1652562142: Client auto-27D4265D-ED04-216A-C6FB-6B8D58C4185F closed its connection.
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 byt1652562454: mosquitto version 2.0.11 starting
+[36mobu1_1  |[0m 1652562454: Config loaded from /etc/mosquitto/mosquitto.conf.
+[36mobu1_1  |[0m 1652562454: Opening ipv4 listen socket on port 1883.
+[36mobu1_1  |[0m 1652562454: mosquitto version 2.0.11 running
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cam
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cam_full
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/denm
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/cpm
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/spatem
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/mapem
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/vam
+[36mobu1_1  |[0m Subscribed to DDS topic vanetza/in/vam_full
+[36mobu1_1  |[0m Starting
+[36mobu1_1  |[0m Starting runtime at 2022-May-14 21:07:37.777236
+[36mobu1_1  |[0m 6e:06:e0:03:00:02
+[36mobu1_1  |[0m Using MAC address: 6e:06:e0:03:00:02.
+[36mobu1_1  |[0m 1652562457: New connection from 127.0.0.1:33130 on port 1883.
+[36mobu1_1  |[0m 1652562457: New client connected from 127.0.0.1:33130 as obu_365 (p2, c1, k60).
+[36mobu1_1  |[0m Enable application 'cam'...
+[36mobu1_1  |[0m Enable application 'cpm'...
+[36mobu1_1  |[0m Enable application 'denm'...
+[36mobu1_1  |[0m Enable application 'mapem'...
+[36mobu1_1  |[0m Enable application 'spatem'...
+[36mobu1_1  |[0m Enable application 'vam'...
+[36mobu1_1  |[0m mqtt.cpp: connected with server
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m mqtt.cpp: Subscription succeeded.
+[36mobu1_1  |[0m 1652562464: New connection from 192.168.98.1:47121 on port 1883.
+[36mobu1_1  |[0m 1652562464: New client connected from 192.168.98.1:47121 as auto-3ED5CB1B-A864-5E93-A7B9-96BECD4AD7C5 (p2, c1, k60).
+[36mobu1_1  |[0m 1652562470: Client auto-3ED5CB1B-A864-5E93-A7B9-96BECD4AD7C5 closed its connection.
+[36mobu1_1  |[0m 1652562476: New connection from 192.168.98.1:51645 on port 1883.
+[36mobu1_1  |[0m 1652562476: New client connected from 192.168.98.1:51645 as auto-743F2CB0-5450-FCD9-E8BB-B8654F87FC71 (p2, c1, k60).
+[36mobu1_1  |[0m 1652562477: Client auto-743F2CB0-5450-FCD9-E8BB-B8654F87FC71 closed its connection.
+[36mobu1_1  |[0m 1652562498: New connection from 192.168.98.1:52503 on port 1883.
+[36mobu1_1  |[0m 1652562498: New client connected from 192.168.98.1:52503 as auto-F790FA08-9E18-BD9A-E13F-7928A7ECFB9A (p2, c1, k60).
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":true,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.119},"timestamp":1652562498.119,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.12},"timestamp":1652562498.12,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.121},"timestamp":1652562498.121,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.122},"timestamp":1652562498.122,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.123},"timestamp":1652562498.123,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.124},"timestamp":1652562498.124,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.125},"timestamp":1652562498.125,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.126},"timestamp":1652562498.126,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.127},"timestamp":1652562498.127,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.128},"timestamp":1652562498.128,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.13},"timestamp":1652562498.13,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.131},"timestamp":1652562498.131,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.132},"timestamp":1652562498.132,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.133},"timestamp":1652562498.133,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.134},"timestamp":1652562498.134,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.137},"timestamp":1652562498.137,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.138},"timestamp":1652562498.138,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.14},"timestamp":1652562498.139,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.141},"timestamp":1652562498.141,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.142},"timestamp":1652562498.142,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.142},"timestamp":1652562498.142,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.143},"timestamp":1652562498.143,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.144},"timestamp":1652562498.144,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.147},"timestamp":1652562498.146,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.148},"timestamp":1652562498.148,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.149},"timestamp":1652562498.149,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.15},"timestamp":1652562498.15,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.152},"timestamp":1652562498.152,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.153},"timestamp":1652562498.153,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":1,"stationType":15,"test":{"json_timestamp":1652562498.154},"timestamp":1652562498.154,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:01 (50 bytes)
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":true,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.127},"timestamp":1652562503.127,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.132},"timestamp":1652562503.131,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.135},"timestamp":1652562503.134,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.137},"timestamp":1652562503.136,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.139},"timestamp":1652562503.138,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.141},"timestamp":1652562503.14,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.143},"timestamp":1652562503.142,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.146},"timestamp":1652562503.145,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.148},"timestamp":1652562503.147,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.15},"timestamp":1652562503.15,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.151},"timestamp":1652562503.151,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.153},"timestamp":1652562503.153,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.155},"timestamp":1652562503.154,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.156},"timestamp":1652562503.156,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.157},"timestamp":1652562503.157,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.159},"timestamp":1652562503.158,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.16},"timestamp":1652562503.16,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.169},"timestamp":1652562503.169,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.171},"timestamp":1652562503.171,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.172},"timestamp":1652562503.172,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.175},"timestamp":1652562503.174,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.176},"timestamp":1652562503.176,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.177},"timestamp":1652562503.176,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.178},"timestamp":1652562503.177,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.183},"timestamp":1652562503.179,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.184},"timestamp":1652562503.184,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.185},"timestamp":1652562503.185,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.187},"timestamp":1652562503.186,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.192},"timestamp":1652562503.188,"width":30,"yawRate":0}
+[36mobu1_1  |[0m received packet from 6e:06:e0:03:00:03 (100 bytes)
+[36mobu1_1  |[0m CAM application received a packet with decodable content
+[36mobu1_1  |[0m CAM JSON: {"accEngaged":true,"acceleration":0,"altitude":800001,"altitudeConf":15,"brakePedal":true,"collisionWarning":true,"cruiseControl":true,"curvature":1023,"driveDirection":"FORWARD","emergencyBrake":true,"gasPedal":false,"heading":3601,"headingConf":127,"latitude":40,"length":100,"longitude":-8,"newInfo":false,"receiverID":2,"receiverType":5,"rssi":-255,"semiMajorConf":4095,"semiMajorOrient":3601,"semiMinorConf":4095,"specialVehicle":{"publicTransportContainer":{"embarkationStatus":false}},"speed":16383,"speedConf":127,"speedLimiter":true,"stationID":3,"stationType":15,"test":{"json_timestamp":1652562503.193},"timestamp":1652562503.193,"width":30,"yawRate":0}
+[36mobu1_1  |[0m 1652562504: Client auto-F790FA08-9E18-BD9A-E13F-7928A7ECFB9A closed its connection.
