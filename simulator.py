@@ -1,3 +1,4 @@
+from anyio import Any
 import paho.mqtt.client as mqtt
 import signal
 import gpxpy
@@ -6,9 +7,14 @@ import time
 import multiprocessing
 import json
 
-client1 = mqtt.Client()
-client2 = mqtt.Client()
-client3 = mqtt.Client()
+#mySurroudings1 = {"obu1": (), "obu2": ()}
+mySurroudings1 = []
+mySurroudings2 = []
+mySurroudings3 = []
+
+client1 = mqtt.Client(userdata=mySurroudings1)
+client2 = mqtt.Client(userdata=mySurroudings2)
+client3 = mqtt.Client(userdata=mySurroudings3)
 clientsList = [client1, client2, client3]
 
 
@@ -35,7 +41,8 @@ def on_connect1(client, userdata, flags, rc):
 def on_message1(client, userdata, msg):
     print("RSU got: ")
     payload = json.loads(msg.payload)
-    print(payload)
+    print(len(userdata))
+    userdata.append(payload)
 
 
 # The callback for when the client receives a CONNACK response from the server.
@@ -52,7 +59,7 @@ def on_connect2(client, userdata, flags, rc):
 def on_message2(client, userdata, msg):
     print("OBU 1: ")
     payload = json.loads(msg.payload)
-    print(payload)
+    # print(payload)
 
 
 # The callback for when the client receives a CONNACK response from the server.
@@ -70,9 +77,9 @@ def on_connect3(client, userdata, flags, rc):
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message3(client, userdata, msg):
-    print("OBU 2: ")
+    #print("OBU 2: ")
     payload = json.loads(msg.payload)
-    print(payload)
+    # print(payload)
 
 
 def setupMqtt():
@@ -120,6 +127,7 @@ def parseGPX(gpxFile):
 def startSimul(currClient, coordsList):
     print("Client: " + str(currClient) + " has started the simulation")
 
+    # Connecting to the broker
     if currClient == 0:
         # RSU client
         client1.on_connect = on_connect1
@@ -144,8 +152,7 @@ def startSimul(currClient, coordsList):
         client3.connect("192.168.98.30")
         client3.loop_start()
 
-    # Start mqtt loop
-    # clientsList[currClient].loop_start
+    # Wait 5 seconds
     if currClient > 1:
         time.sleep(5)
 
@@ -164,17 +171,23 @@ def startSimul(currClient, coordsList):
                 topic="vanetza/in/cam", payload=msg_payload)
             time.sleep(0.1)
 
+    while(True):
+        pass
+    """
     if currClient == 0:
         # RSU client
-        client1.loop_forever()
+        # client1.loop_forever()
+        print("Client 0 heading out")
     elif currClient == 1:
         # OBU1 client
-        client2.loop()
+        # client2.loop()
+        print("Client 1 heading out")
     elif currClient == 2:
         # OBU2 client
         client1.disconnect()
         client2.disconnect()
         client3.disconnect()
+    """
 
 
 def main():
