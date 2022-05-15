@@ -7,8 +7,8 @@ import time
 import multiprocessing
 import json
 
-#mySurroudings1 = {"obu1": (), "obu2": ()}
-mySurroudings1 = []
+mySurroudings1 = {"1": [], "2": [], "3": []}
+#mySurroudings1 = []
 mySurroudings2 = []
 mySurroudings3 = []
 
@@ -41,8 +41,11 @@ def on_connect1(client, userdata, flags, rc):
 def on_message1(client, userdata, msg):
     print("RSU got: ")
     payload = json.loads(msg.payload)
-    print(len(userdata))
-    userdata.append(payload)
+    pos = (payload["latitude"], payload["longitude"])
+    userdata[str(payload["stationID"])].append(pos)
+    # Debug for loop
+    # for key in userdata:
+    #    print(len(userdata[key]))
 
 
 # The callback for when the client receives a CONNACK response from the server.
