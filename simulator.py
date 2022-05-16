@@ -6,11 +6,15 @@ import gpxpy.gpx
 import time
 import multiprocessing
 import json
+import math
+
+const = pow(10, 7)
 
 mySurroudings1 = {"1": [], "2": [], "3": []}
 #mySurroudings1 = []
-mySurroudings2 = []
-mySurroudings3 = []
+mySurroudings2 = {"2": (), "3": ()}
+mySurroudings3 = {"2": (), "3": ()}
+
 
 client1 = mqtt.Client(userdata=mySurroudings1)
 client2 = mqtt.Client(userdata=mySurroudings2)
@@ -39,10 +43,11 @@ def on_connect1(client, userdata, flags, rc):
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message1(client, userdata, msg):
-    print("RSU got: ")
+    #print("RSU got: ")
     payload = json.loads(msg.payload)
     pos = (payload["latitude"], payload["longitude"])
     userdata[str(payload["stationID"])].append(pos)
+    # print(pos)
     # Debug for loop
     # for key in userdata:
     #    print(len(userdata[key]))
@@ -55,13 +60,17 @@ def on_connect2(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
     if rc == 0:
         client2.subscribe("vanetza/out/cam")
+        client2.subscribe("vanetza/in/cam")
 
 # The callback for when a PUBLISH message is received from the server.
 
 
 def on_message2(client, userdata, msg):
-    print("OBU 1: ")
+    #print("OBU 1: ")
     payload = json.loads(msg.payload)
+    pos = (payload["latitude"], payload["longitude"], payload["heading"])
+    userdata[str(payload["stationID"])] = pos
+    # print(userdata)
     # print(payload)
 
 
@@ -72,6 +81,7 @@ def on_connect3(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
     if rc == 0:
         client3.subscribe("vanetza/out/cam")
+        client3.subscribe("vanetza/in/cam")
 
     #msg_payload = "{\"accEngaged\":true,\"acceleration\":0,\"altitude\":800001,\"altitudeConf\":15,\"brakePedal\":true,\"collisionWarning\":true,\"cruiseControl\":true,\"curvature\":1023,\"driveDirection\":\"FORWARD\",\"emergencyBrake\":true,\"gasPedal\":false,\"heading\":3601,\"headingConf\":127,\"latitude\":400000000,\"length\":100,\"longitude\":-80000000,\"semiMajorConf\":4095,\"semiMajorOrient\":3601,\"semiMinorConf\":4095,\"specialVehicle\":{\"publicTransportContainer\":{\"embarkationStatus\":false}},\"speed\":16383,\"speedConf\":127,\"speedLimiter\":true,\"stationID\":1,\"stationType\":15,\"width\":30,\"yawRate\":0}"
 
@@ -82,6 +92,9 @@ def on_connect3(client, userdata, flags, rc):
 def on_message3(client, userdata, msg):
     #print("OBU 2: ")
     payload = json.loads(msg.payload)
+    pos = (payload["latitude"], payload["longitude"], payload["heading"])
+    userdata[str(payload["stationID"])] = pos
+    # print(userdata)
     # print(payload)
 
 
@@ -127,6 +140,86 @@ def parseGPX(gpxFile):
     return coordsList
 
 
+def calcBearing(lat1, lon1, lat2, lon2):
+    longitude1 = lon1
+    longitude2 = lon2
+    latitude1 = math.radians(lat1)
+    latitude2 = math.radians(lat2)
+    longDiff = math.radians(longitude2-longitude1)
+    y = math.sin(longDiff)*math.cos(latitude2)
+    x = math.cos(latitude1)*math.sin(latitude2) - \
+        math.sin(latitude1)*math.cos(latitude2)*math.cos(longDiff)
+
+    return (math.degrees(math.atan2(y, x))+360) % 360
+
+
+def leaderCheck(currClient):
+
+    # heading
+    # north - 0
+    # east - 90
+    # west - -90
+    # south 180/-180
+
+    currInfo = None
+
+    if currClient == 0:
+        # RSU client
+        pass
+    elif currClient == 1:
+        # OBU1 client
+        myInfo = mySurroudings2["2"]
+        otherInfo = mySurroudings2["3"]
+
+        if otherInfo != () and myInfo != ():
+            print(myInfo)
+            print(otherInfo)
+            bearingToOtherCar = calcBearing(
+                lat1=myInfo[0]/const, lon1=myInfo[1]/const, lat2=otherInfo[0]/const, lon2=otherInfo[1]/const)
+            bearingOfThisCar = calcBearing(
+                lat1=myInfo[0]/const, lon1=myInfo[1]/const, lat2=myInfo[0]/const, lon2=myInfo[1]/const)
+            relativeBearing = bearingToOtherCar - bearingOfThisCar
+
+            if (relativeBearing < -180):
+                relativeBearing = 360 + relativeBearing
+            if (relativeBearing > 180):
+                relativeBearing = 360 - relativeBearing
+
+            print(relativeBearing)
+
+    elif currClient == 2:
+        myInfo = mySurroudings3["3"]
+        otherInfo = mySurroudings3["2"]
+        if otherInfo != () and myInfo != ():
+            # print(myInfo)
+            # print(otherInfo)
+            bearingToOtherCar = calcBearing(
+                lat1=myInfo[0]/const, lon1=myInfo[1]/const, lat2=otherInfo[0]/const, lon2=otherInfo[1]/const)
+            bearingOfThisCar = calcBearing(
+                lat1=myInfo[0]/const, lon1=myInfo[1]/const, lat2=myInfo[0]/const, lon2=myInfo[1]/const)
+            relativeBearing = bearingToOtherCar - bearingOfThisCar
+
+            if (relativeBearing < -180):
+                relativeBearing = 360 + relativeBearing
+            if (relativeBearing > 180):
+                relativeBearing = 360 - relativeBearing
+
+            # print(relativeBearing)
+
+    """
+    if currInfo != None:
+        heading = currInfo[2]
+        if heading >= 0 and heading <= 90:
+            pass
+        elif heading > 90 and heading <= 180:
+            pass
+        elif heading <= 0 and heading >= -90:
+            pass
+        elif heading >= -180 and heading < -90:
+            pass
+    """
+
+
 def startSimul(currClient, coordsList):
     print("Client: " + str(currClient) + " has started the simulation")
 
@@ -157,14 +250,14 @@ def startSimul(currClient, coordsList):
 
     # Wait 5 seconds
     if currClient > 1:
-        time.sleep(5)
+        time.sleep(2)
 
     if currClient != 0:
         myID = int(currClient) + 1
 
         for coords in coordsList:
-            lat = coords[0]*pow(10, 7)
-            lng = coords[1]*pow(10, 7)
+            lat = coords[0]*const
+            lng = coords[1]*const
             msg_payload = "{\"accEngaged\":true,\"acceleration\":0,\"altitude\":800001,\"altitudeConf\":15,\"brakePedal\":true,\"collisionWarning\":true,\"cruiseControl\":true,\"curvature\":1023,\"driveDirection\":\"FORWARD\",\"emergencyBrake\":true,\"gasPedal\":false,\"heading\":3601,\"headingConf\":127,\"latitude\":" + \
                 str(lat) + ",\"length\":100,\"longitude\":" + \
                 str(lng) + ",\"semiMajorConf\":4095,\"semiMajorOrient\":3601,\"semiMinorConf\":4095,\"specialVehicle\":{\"publicTransportContainer\":{\"embarkationStatus\":false}},\"speed\":16383,\"speedConf\":127,\"speedLimiter\":true,\"stationID\":" + \
@@ -173,6 +266,7 @@ def startSimul(currClient, coordsList):
             clientsList[currClient].publish(
                 topic="vanetza/in/cam", payload=msg_payload)
             time.sleep(0.1)
+            leaderCheck(currClient)
 
     while(True):
         pass
