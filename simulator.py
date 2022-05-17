@@ -162,62 +162,36 @@ def leaderCheck(currClient):
     # south 180/-180
 
     currInfo = None
+    myInfo = ()
+    otherInfo = ()
 
-    if currClient == 0:
-        # RSU client
-        pass
-    elif currClient == 1:
+    if currClient == 1:
         # OBU1 client
         myInfo = mySurroudings2["2"]
         otherInfo = mySurroudings2["3"]
 
-        if otherInfo != () and myInfo != ():
-            print(myInfo)
-            print(otherInfo)
-            bearingToOtherCar = calcBearing(
-                lat1=myInfo[0]/const, lon1=myInfo[1]/const, lat2=otherInfo[0]/const, lon2=otherInfo[1]/const)
-            bearingOfThisCar = calcBearing(
-                lat1=myInfo[0]/const, lon1=myInfo[1]/const, lat2=myInfo[0]/const, lon2=myInfo[1]/const)
-            relativeBearing = bearingToOtherCar - bearingOfThisCar
-
-            if (relativeBearing < -180):
-                relativeBearing = 360 + relativeBearing
-            if (relativeBearing > 180):
-                relativeBearing = 360 - relativeBearing
-
-            print(relativeBearing)
-
     elif currClient == 2:
         myInfo = mySurroudings3["3"]
         otherInfo = mySurroudings3["2"]
-        if otherInfo != () and myInfo != ():
-            # print(myInfo)
-            # print(otherInfo)
-            bearingToOtherCar = calcBearing(
-                lat1=myInfo[0]/const, lon1=myInfo[1]/const, lat2=otherInfo[0]/const, lon2=otherInfo[1]/const)
-            bearingOfThisCar = calcBearing(
-                lat1=myInfo[0]/const, lon1=myInfo[1]/const, lat2=myInfo[0]/const, lon2=myInfo[1]/const)
-            relativeBearing = bearingToOtherCar - bearingOfThisCar
 
-            if (relativeBearing < -180):
-                relativeBearing = 360 + relativeBearing
-            if (relativeBearing > 180):
-                relativeBearing = 360 - relativeBearing
+    if otherInfo != () and myInfo != ():
+        # print(myInfo)
+        # print(otherInfo)
+        bearingToOtherCar = calcBearing(
+            lat1=myInfo[0]/const, lon1=myInfo[1]/const, lat2=otherInfo[0]/const, lon2=otherInfo[1]/const)
+        bearingOfThisCar = myInfo[2]
+        relativeBearing = bearingToOtherCar - bearingOfThisCar
+        if (relativeBearing < -180):
+            relativeBearing = 360 + relativeBearing
+        if (relativeBearing > 180):
+            relativeBearing = 360 - relativeBearing
 
-            # print(relativeBearing)
+        print("My Bearing: " + str(relativeBearing))
 
-    """
-    if currInfo != None:
-        heading = currInfo[2]
-        if heading >= 0 and heading <= 90:
-            pass
-        elif heading > 90 and heading <= 180:
-            pass
-        elif heading <= 0 and heading >= -90:
-            pass
-        elif heading >= -180 and heading < -90:
-            pass
-    """
+        if relativeBearing <= -50 or relativeBearing <= 50:
+            print("I'm behind: " + str(currClient))
+        elif relativeBearing >= 130 or relativeBearing <= 230:
+            print("I'm in front: " + str(currClient))
 
 
 def startSimul(currClient, coordsList):
@@ -258,7 +232,7 @@ def startSimul(currClient, coordsList):
         for coords in coordsList:
             lat = coords[0]*const
             lng = coords[1]*const
-            msg_payload = "{\"accEngaged\":true,\"acceleration\":0,\"altitude\":800001,\"altitudeConf\":15,\"brakePedal\":true,\"collisionWarning\":true,\"cruiseControl\":true,\"curvature\":1023,\"driveDirection\":\"FORWARD\",\"emergencyBrake\":true,\"gasPedal\":false,\"heading\":3601,\"headingConf\":127,\"latitude\":" + \
+            msg_payload = "{\"accEngaged\":true,\"acceleration\":0,\"altitude\":800001,\"altitudeConf\":15,\"brakePedal\":true,\"collisionWarning\":true,\"cruiseControl\":true,\"curvature\":1023,\"driveDirection\":\"FORWARD\",\"emergencyBrake\":true,\"gasPedal\":false,\"heading\":270,\"headingConf\":127,\"latitude\":" + \
                 str(lat) + ",\"length\":100,\"longitude\":" + \
                 str(lng) + ",\"semiMajorConf\":4095,\"semiMajorOrient\":3601,\"semiMinorConf\":4095,\"specialVehicle\":{\"publicTransportContainer\":{\"embarkationStatus\":false}},\"speed\":16383,\"speedConf\":127,\"speedLimiter\":true,\"stationID\":" + \
                 str(myID) + ",\"stationType\":15,\"width\":30,\"yawRate\":0}"
