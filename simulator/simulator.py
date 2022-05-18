@@ -413,7 +413,7 @@ def startSimul(currClient, coordsList, stationType):
                 if leader:
                     currentLeader = currClient
                     simulatorClient.publish(
-                        topic="leaders", payload="{\"leader\":" + str(currentLeader) + "}")
+                        topic="leaders", payload="{\"leader\":" + str(currentLeader) + ",\"stationType\":" + str(stationType) + "}")
                     print("I'm the leader: " + str(currClient))
 
     else:
