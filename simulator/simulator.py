@@ -7,7 +7,7 @@ import time
 import multiprocessing
 import json
 import math
-
+from time import sleep
 const = pow(10, 7)
 
 mySurroudings1 = {"1": [], "2": [], "3": [], "4": [], "5": []}
@@ -415,6 +415,7 @@ def startSimul(currClient, coordsList, stationType):
                     simulatorClient.publish(
                         topic="leaders", payload="{\"leader\":" + str(currentLeader) + ",\"stationType\":" + str(stationType) + "}")
                     print("I'm the leader: " + str(currClient))
+            sleep(1)
 
     else:
         while(True):

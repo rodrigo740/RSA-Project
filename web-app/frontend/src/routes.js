@@ -22,6 +22,7 @@ import Icons from "views/Icons.js";
 import Typography from "views/Typography.js";
 import TableList from "views/Tables.js";
 import Maps from "views/Map.js";
+import Maps_Page from "views/Maps_Page";
 import UserPage from "views/User.js";
 import UpgradeToPro from "views/Upgrade.js";
 
@@ -44,7 +45,7 @@ var routes = [/*
     path: "/maps",
     name: "Maps",
     icon: "nc-icon nc-pin-3",
-    component: Maps,
+    component: Maps_Page,
     layout: "/admin",
   },/*
   {

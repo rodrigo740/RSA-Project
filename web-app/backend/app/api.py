@@ -135,5 +135,6 @@ async def getLocations() -> dict:
     # print(data)
     dict = {}
     for item in data:
-        dict["obu" + str(item["last"])] = (item["latitude"], item["longitude"])
+        dict["obu" + str(item["last"])
+             ] = {item["latitude"], item["longitude"]}
     return dict
