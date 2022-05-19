@@ -2,6 +2,7 @@ import React from "react";
 // react plugin used to create google maps
 import { GoogleMap, Marker, withGoogleMap, withScriptjs } from "react-google-maps";
 // core components
+var iconBase = 'http://maps.google.com/mapfiles/kml/pal4/';
 
 
 const MapWithAMarker = withScriptjs(
@@ -12,16 +13,33 @@ const MapWithAMarker = withScriptjs(
     >
 
       {props.markers.map((props, index) => {
-
-        return (
-          <Marker position={{ lat: props.lat, lng: props.lng }}
-            key={index}
-            id={index}
-            onClick={(() => {
-            }
-            )}
-          />
-        )
+        //console.log(props.leader)
+        if (props.leader == "0") {
+          return (
+            <Marker position={{ lat: props.lat, lng: props.lng }}
+              key={index}
+              id={index}
+              icon={iconBase + 'icon15.png'}
+              onClick={(() => {
+              }
+              )}
+              
+            />
+          )
+        } else {
+          return (
+            <Marker position={{ lat: props.lat, lng: props.lng }}
+              key={index}
+              id={index}
+              icon={iconBase + 'icon62.png'}
+              onClick={(() => {
+              }
+              )}
+              
+            />
+          )
+        }
+        
       })}
     </GoogleMap>
   ));

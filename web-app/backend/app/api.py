@@ -132,9 +132,18 @@ async def getLocations() -> dict:
         'select LAST(id), latitude, longitude from cams where id = \'4\'').get_points(measurement='cams'))
     data += list(influxClient.query(
         'select LAST(id), latitude, longitude from cams where id = \'5\'').get_points(measurement='cams'))
+
+    leader = list(influxClient.query(
+        'select LAST(id) from leaders').get_points(measurement='leaders'))[0]["last"]
     # print(data)
     dict = {}
     for item in data:
-        dict["obu" + str(item["last"])
-             ] = {item["latitude"], item["longitude"]}
+        if leader == item["last"]:
+            dict["obu" + str(item["last"])
+                 ] = {"lat": item["latitude"], "lng": item["longitude"], "id": item["last"], "leader": "1"}
+        else:
+            dict["obu" + str(item["last"])
+                 ] = {"lat": item["latitude"], "lng": item["longitude"], "id": item["last"], "leader": "0"}
+
+    # print(dict)
     return dict

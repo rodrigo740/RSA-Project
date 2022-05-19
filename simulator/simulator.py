@@ -195,6 +195,26 @@ def parseGPX(gpxFile):
     return coordsList
 
 
+def interPoint(point1, point2):
+    lat1 = point1[0]
+    lon1 = point1[1]
+
+    lat2 = point2[0]
+    lon2 = point2[1]
+
+    f = 0
+    d = 1/10
+    A = math.sin((1-f)*d)/math.sin(d)
+    B = math.sin(f*d)/math.sin(d)
+    x = A*math.cos(lat1)*math.cos(lon1) + B*math.cos(lat2)*math.cos(lon2)
+    y = A*math.cos(lat1)*math.sin(lon1) + B*math.cos(lat2)*math.sin(lon2)
+    z = A*math.sin(lat1) + B*math.sin(lat2)
+    lat = math.atan2(z, math.sqrt(pow(x, 2)+pow(y, 2)))
+    lon = math.atan2(y, x)
+
+    return (lat1 + lat, lon1 + lon)
+
+
 def calcBearing(lat1, lon1, lat2, lon2):
     longitude1 = lon1
     longitude2 = lon2
@@ -219,14 +239,16 @@ def check(myInfo, otherInfo):
     if (relativeBearing > 180):
         relativeBearing = 360 - relativeBearing
 
-    # print("My Bearing: " + str(relativeBearing))
+    #print("My Bearing: " + str(relativeBearing))
 
-    if relativeBearing <= -50 or relativeBearing <= 50:
-        # print("I'm behind: " + str(currClient))
-        res = False
-    elif relativeBearing >= 130 or relativeBearing <= 230:
+    # if relativeBearing >= -50 and relativeBearing <= 50:
+    # print("I'm behind: " + str(currClient))
+    #    res = False
+    if relativeBearing >= 170 and relativeBearing <= 190:
         # print("I'm in front: " + str(currClient))
         res = True
+    else:
+        res = False
 
     return res
 
@@ -242,7 +264,6 @@ def leaderCheck(currClient):
     res = False
     myInfo = ()
     otherInfo = ()
-
     if currClient == 1:
         # OBU1 client
         myInfo = mySurroudings2["2"]
@@ -317,12 +338,11 @@ def leaderCheck(currClient):
 
 def startSimul(currClient, coordsList, stationType):
     print("Client: " + str(currClient) + " has started the simulation")
-
     # load reference CAM
-
+    """
     with open('utils/in_cam.json') as f:
         refCam = json.load(f)
-
+    """
     # Connecting to the broker
     if currClient == 0:
         # RSU client
@@ -368,13 +388,13 @@ def startSimul(currClient, coordsList, stationType):
         client5.connect("192.168.98.50")
         client5.loop_start()
 
-    # Wait 2 seconds
+    # Wait 0.2 seconds
     if currClient == 2:
-        time.sleep(2)
+        time.sleep(0.2)
     elif currClient == 3:
-        time.sleep(4)
+        time.sleep(0.4)
     elif currClient == 4:
-        time.sleep(6)
+        time.sleep(0.6)
 
     msgNum = 0
     simulatorClient.connect("127.0.0.1", port=1883)
@@ -382,14 +402,14 @@ def startSimul(currClient, coordsList, stationType):
 
     if currClient != 0:
         myID = int(currClient) + 1
-        refCam["stationID"] = myID
-        refCam["stationType"] = stationType
+        #refCam["stationID"] = myID
+        #refCam["stationType"] = stationType
 
         for coords in coordsList:
             lat = coords[0]*const
             lng = coords[1]*const
-            refCam["latitude"] = int(lat)
-            refCam["longitude"] = int(lng)
+            #refCam["latitude"] = int(lat)
+            #refCam["longitude"] = int(lng)
             """
             msg_payload = str(refCam).replace("T", "t").replace(
                "F", "f").replace("\'", "\"").replace("fORWARD", "FORWARD")
@@ -415,7 +435,7 @@ def startSimul(currClient, coordsList, stationType):
                     simulatorClient.publish(
                         topic="leaders", payload="{\"leader\":" + str(currentLeader) + ",\"stationType\":" + str(stationType) + "}")
                     print("I'm the leader: " + str(currClient))
-            sleep(1)
+            # sleep(1)
 
     else:
         while(True):
@@ -427,11 +447,19 @@ def main():
     # get path
     gpxFile = "route-1.gpx"
     coordsList = parseGPX(gpxFile)
+    finalCoordsList = []
+    """
+    for i in range(0, len(coordsList)-1):
+        finalCoordsList.append(coordsList[i])
+        finalCoordsList.append(interPoint(coordsList[i], coordsList[i+1]))
 
+    print(finalCoordsList)
+    """
     pList = []
 
     # RSU Process
-    p1 = multiprocessing.Process(target=startSimul, args=(0, coordsList, 15))
+    p1 = multiprocessing.Process(
+        target=startSimul, args=(0, coordsList, 15))
     p1.start()
     pList.append(p1)
 

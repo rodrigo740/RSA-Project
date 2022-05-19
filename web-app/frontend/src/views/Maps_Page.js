@@ -16,7 +16,7 @@ import {Card, Container, Row} from "reactstrap";
 // core components
 import Maps from "./Maps_Component.js";
 
-const call_time = 1000;
+const call_time = 200;
 
 
 const Maps_Page = () => {
@@ -31,10 +31,10 @@ const Maps_Page = () => {
           setMarkers(value)
         }
         
-        );
+        );/*
         getLeaders().then((value) => {
           setLeader(value)
-        });
+        });*/
       }, call_time);
 
       return () => clearInterval(interval)
@@ -47,13 +47,16 @@ const Maps_Page = () => {
       console.log(response)
     let result = await response.json();
     let all_locations = [];
+    console.log("Results: ")
     console.log(result)
     for (var obu in result) {
       
       all_locations.push(
         {
-          lat: result[obu][1]/10000000,
-          lng: result[obu][0]/10000000
+          lat: result[obu]["lat"]/10000000,
+          lng: result[obu]["lng"]/10000000,
+          id: result[obu]["id"],
+          leader: result[obu]["leader"]
         }
       )
     }
@@ -68,6 +71,7 @@ const Maps_Page = () => {
     let result = await response.json();
     //console.log(result)
     let res = [{"leader": result["last"]}];
+    
     //console.log("RES NEXT")
     //console.log(res)
     
