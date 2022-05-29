@@ -1,3 +1,4 @@
+from email.policy import default
 from anyio import Any
 import paho.mqtt.client as mqtt
 import signal
@@ -8,29 +9,39 @@ import multiprocessing
 import json
 import math
 from time import sleep
+from collections import defaultdict
+import geopy
+import geopy.distance
+from geographiclib.geodesic import Geodesic
+
+
 const = pow(10, 7)
 
-mySurroudings1 = {"1": [], "2": [], "3": [], "4": [], "5": []}
-mySurroudings2 = {"2": (), "3": (), "4": (), "5": ()}
-mySurroudings3 = {"2": (), "3": (), "4": (), "5": ()}
-mySurroudings4 = {"2": (), "3": (), "4": (), "5": ()}
-mySurroudings5 = {"2": (), "3": (), "4": (), "5": ()}
+mySurroudings2 = dict()
+mySurroudings3 = dict()
+mySurroudings4 = dict()
+mySurroudings5 = dict()
 
-currentLeader = 0
+mySurroudings2 = defaultdict(lambda: [], mySurroudings2)
+mySurroudings3 = defaultdict(lambda: [], mySurroudings3)
+mySurroudings4 = defaultdict(lambda: [], mySurroudings4)
+mySurroudings5 = defaultdict(lambda: [], mySurroudings5)
 
-client1 = mqtt.Client(userdata=mySurroudings1)
+surroudingsList = [mySurroudings2, mySurroudings3,
+                   mySurroudings4, mySurroudings5]
+
+
 client2 = mqtt.Client(userdata=mySurroudings2)
 client3 = mqtt.Client(userdata=mySurroudings3)
 client4 = mqtt.Client(userdata=mySurroudings4)
 client5 = mqtt.Client(userdata=mySurroudings5)
-clientsList = [client1, client2, client3, client4, client5]
+clientsList = [client2, client3, client4, client5]
 
 simulatorClient = mqtt.Client()
 
 
 def handler(signum, frame):
     print("\nDisconnecting Mqtt client")
-    client1.disconnect
     client2.disconnect
     client3.disconnect
     client4.disconnect
@@ -57,28 +68,6 @@ def on_messageSim(client, userdata, msg):
     if 'leader' in payload:
         print("leader:" + str(payload["leader"]))
 
-# The callback for when the client receives a CONNACK response from the server.
-
-
-def on_connect1(client, userdata, flags, rc):
-    print("Connected with result code "+str(rc))
-    if rc == 0:
-        client1.subscribe("vanetza/out/cam")
-
-
-# The callback for when a PUBLISH message is received from the server.
-def on_message1(client, userdata, msg):
-    # print("RSU got: ")
-    # payload = json.loads(msg.payload)
-    # pos = (payload["latitude"], payload["longitude"])
-    # userdata[str(payload["stationID"])].append(pos)
-    simulatorClient.publish(topic="cams", payload=msg.payload)
-
-    # print(pos)
-    # Debug for loop
-    # for key in userdata:
-    #    print(len(userdata[key]))
-
 
 # The callback for when the client receives a CONNACK response from the server.
 
@@ -96,7 +85,7 @@ def on_message2(client, userdata, msg):
     # print("OBU 1: ")
     payload = json.loads(msg.payload)
     pos = (payload["latitude"], payload["longitude"], payload["heading"])
-    userdata[str(payload["stationID"])] = pos
+    userdata[str(payload["stationID"])].append(pos)
     # print(userdata)
     # print(payload)
 
@@ -115,7 +104,7 @@ def on_message3(client, userdata, msg):
     # print("OBU 2: ")
     payload = json.loads(msg.payload)
     pos = (payload["latitude"], payload["longitude"], payload["heading"])
-    userdata[str(payload["stationID"])] = pos
+    userdata[str(payload["stationID"])].append(pos)
 
 # The callback for when the client receives a CONNACK response from the server.
 
@@ -133,7 +122,7 @@ def on_message4(client, userdata, msg):
     # print("OBU 2: ")
     payload = json.loads(msg.payload)
     pos = (payload["latitude"], payload["longitude"], payload["heading"])
-    userdata[str(payload["stationID"])] = pos
+    userdata[str(payload["stationID"])].append(pos)
 
 
 # The callback for when the client receives a CONNACK response from the server.
@@ -150,17 +139,10 @@ def on_message5(client, userdata, msg):
     # print("OBU 2: ")
     payload = json.loads(msg.payload)
     pos = (payload["latitude"], payload["longitude"], payload["heading"])
-    userdata[str(payload["stationID"])] = pos
+    userdata[str(payload["stationID"])].append(pos)
 
 
 def setupMqtt():
-    # RSU client
-    client1.on_connect = on_connect1
-    client1.on_message = on_message1
-
-    client1.connect("192.168.98.10")
-    client1.loop_start()
-
     # OBU1 client
     client2.on_connect = on_connect2
     client2.on_message = on_message2
@@ -193,6 +175,8 @@ def parseGPX(gpxFile):
                 coordsList.append((point.latitude, point.longitude))
 
     return coordsList
+
+# FIXME!
 
 
 def interPoint(point1, point2):
@@ -253,90 +237,41 @@ def check(myInfo, otherInfo):
     return res
 
 
-def leaderCheck(currClient):
+def leaderCheck(currClient, mySurroudings, currentLeader):
 
     # heading
     # north - 0
     # east - 90
-    # west - -90
-    # south 180/-180
-
+    # west - 270
+    # south 180
     res = False
-    myInfo = ()
-    otherInfo = ()
-    if currClient == 1:
-        # OBU1 client
-        myInfo = mySurroudings2["2"]
+    myInfo = mySurroudings[str(currClient)][len(
+        mySurroudings[str(currClient)])-1]
 
-        if currentLeader != 0:
-            otherInfo = mySurroudings2[str(currentLeader+1)]
-            return check(myInfo, otherInfo)
-        else:
-            if mySurroudings2["3"] != ():
-                otherInfo = mySurroudings2["3"]
-                res = check(myInfo, otherInfo)
-            if mySurroudings2["4"] != ():
-                otherInfo = mySurroudings2["4"]
-                res = check(myInfo, otherInfo)
-            if mySurroudings2["5"] != ():
-                otherInfo = mySurroudings2["5"]
-                res = check(myInfo, otherInfo)
+    #print("myInfo: " + str(myInfo))
 
-    elif currClient == 2:
-        myInfo = mySurroudings3["3"]
+    if currentLeader != -1:
+        print("There is a leader: " + str(currentLeader) + " - " + str(currClient))
+        otherInfo = mySurroudings[str(currentLeader)][len(
+            mySurroudings[str(currentLeader)])-1]
+        #print("otherInfo: " + str(otherInfo))
 
-        if currentLeader != 0:
-            otherInfo = mySurroudings3[str(currentLeader+1)]
-            return check(myInfo, otherInfo)
-        else:
-            if mySurroudings3["2"] != ():
-                otherInfo = mySurroudings3["2"]
-                res = check(myInfo, otherInfo)
-            if mySurroudings3["4"] != ():
-                otherInfo = mySurroudings3["4"]
-                res = check(myInfo, otherInfo)
-            if mySurroudings3["5"] != ():
-                otherInfo = mySurroudings3["5"]
-                res = check(myInfo, otherInfo)
+        return check(myInfo, otherInfo)
+    print("There isn't a leader: " + str(currClient))
 
-    elif currClient == 3:
-        myInfo = mySurroudings4["4"]
+    for key in mySurroudings:
+        if key != str(currClient):
+            otherInfo = mySurroudings[key][len(mySurroudings[key])-1]
+            #print("otherInfo: " + str(otherInfo))
 
-        if currentLeader != 0:
-            otherInfo = mySurroudings4[str(currentLeader+1)]
-            return check(myInfo, otherInfo)
-        else:
-            if mySurroudings4["2"] != ():
-                otherInfo = mySurroudings4["2"]
-                res = check(myInfo, otherInfo)
-            if mySurroudings4["3"] != ():
-                otherInfo = mySurroudings4["3"]
-                res = check(myInfo, otherInfo)
-            if mySurroudings4["5"] != ():
-                otherInfo = mySurroudings4["5"]
-                res = check(myInfo, otherInfo)
-
-    elif currClient == 4:
-        myInfo = mySurroudings5["5"]
-
-        if currentLeader != 0:
-            otherInfo = mySurroudings5[str(currentLeader+1)]
-            return check(myInfo, otherInfo)
-        else:
-            if mySurroudings5["2"] != ():
-                otherInfo = mySurroudings5["2"]
-                res = check(myInfo, otherInfo)
-            if mySurroudings5["4"] != ():
-                otherInfo = mySurroudings5["4"]
-                res = check(myInfo, otherInfo)
-            if mySurroudings5["3"] != ():
-                otherInfo = mySurroudings5["3"]
-                res = check(myInfo, otherInfo)
+            res = check(myInfo, otherInfo)
+            if not res:
+                return res
 
     return res
 
 
-def startSimul(currClient, coordsList, stationType):
+def startSimul(currClient, coordsList, stationType, mySurr, currentLeader):
     print("Client: " + str(currClient) + " has started the simulation")
     # load reference CAM
     """
@@ -345,17 +280,6 @@ def startSimul(currClient, coordsList, stationType):
     """
     # Connecting to the broker
     if currClient == 0:
-        # RSU client
-        client1.on_connect = on_connect1
-        client1.on_message = on_message1
-
-        client1.connect("192.168.98.10")
-        client1.loop_start()
-
-        simulatorClient.on_connect = on_connectSim
-        simulatorClient.on_message = on_messageSim
-
-    elif currClient == 1:
 
         # OBU1 client
         client2.on_connect = on_connect2
@@ -363,7 +287,7 @@ def startSimul(currClient, coordsList, stationType):
 
         client2.connect("192.168.98.20")
         client2.loop_start()
-    elif currClient == 2:
+    elif currClient == 1:
 
         # OBU2 client
         client3.on_connect = on_connect3
@@ -371,7 +295,7 @@ def startSimul(currClient, coordsList, stationType):
 
         client3.connect("192.168.98.30")
         client3.loop_start()
-    elif currClient == 3:
+    elif currClient == 2:
 
         # OBU3 client
         client4.on_connect = on_connect4
@@ -379,7 +303,7 @@ def startSimul(currClient, coordsList, stationType):
 
         client4.connect("192.168.98.40")
         client4.loop_start()
-    elif currClient == 4:
+    elif currClient == 3:
 
         # OBU4 client
         client5.on_connect = on_connect5
@@ -389,57 +313,57 @@ def startSimul(currClient, coordsList, stationType):
         client5.loop_start()
 
     # Wait 0.2 seconds
-    if currClient == 2:
+    if currClient == 1:
         time.sleep(0.2)
-    elif currClient == 3:
+    elif currClient == 2:
         time.sleep(0.4)
-    elif currClient == 4:
+    elif currClient == 3:
         time.sleep(0.6)
 
     msgNum = 0
     simulatorClient.connect("127.0.0.1", port=1883)
     simulatorClient.loop_start()
+    niter = 0
+    for coords in coordsList:
+        lat = coords[0]*const
+        lng = coords[1]*const
+        #refCam["latitude"] = int(lat)
+        #refCam["longitude"] = int(lng)
+        """
+        msg_payload = str(refCam).replace("T", "t").replace(
+            "F", "f").replace("\'", "\"").replace("fORWARD", "FORWARD")
 
-    if currClient != 0:
-        myID = int(currClient) + 1
-        #refCam["stationID"] = myID
-        #refCam["stationType"] = stationType
+        msg_payload = str(refCam)
+        """
+        msg_payload = "{\"accEngaged\":true,\"acceleration\":0,\"altitude\":800001,\"altitudeConf\":15,\"brakePedal\":true,\"collisionWarning\":true,\"cruiseControl\":true,\"curvature\":1023,\"driveDirection\":\"FORWARD\",\"emergencyBrake\":true,\"gasPedal\":false,\"heading\":90,\"headingConf\":127,\"latitude\":" + \
+            str(lat) + ",\"length\":100,\"longitude\":" + \
+            str(lng) + ",\"semiMajorConf\":4095,\"semiMajorOrient\":3601,\"semiMinorConf\":4095,\"specialVehicle\":{\"publicTransportContainer\":{\"embarkationStatus\":false}},\"speed\":16383,\"speedConf\":127,\"speedLimiter\":true,\"stationID\":" + \
+            str(currClient) + ",\"stationType\":" + \
+            str(stationType) + ",\"width\":30,\"yawRate\":0}"
 
-        for coords in coordsList:
-            lat = coords[0]*const
-            lng = coords[1]*const
-            #refCam["latitude"] = int(lat)
-            #refCam["longitude"] = int(lng)
-            """
-            msg_payload = str(refCam).replace("T", "t").replace(
-               "F", "f").replace("\'", "\"").replace("fORWARD", "FORWARD")
+        msgNum += 1
+        niter += 1
+        clientsList[currClient].publish(
+            topic="vanetza/in/cam", payload=msg_payload)
+        simulatorClient.publish(topic="cams", payload=msg_payload)
 
-            msg_payload = str(refCam)
-            """
-            msg_payload = "{\"accEngaged\":true,\"acceleration\":0,\"altitude\":800001,\"altitudeConf\":15,\"brakePedal\":true,\"collisionWarning\":true,\"cruiseControl\":true,\"curvature\":1023,\"driveDirection\":\"FORWARD\",\"emergencyBrake\":true,\"gasPedal\":false,\"heading\":270,\"headingConf\":127,\"latitude\":" + \
-                str(lat) + ",\"length\":100,\"longitude\":" + \
-                str(lng) + ",\"semiMajorConf\":4095,\"semiMajorOrient\":3601,\"semiMinorConf\":4095,\"specialVehicle\":{\"publicTransportContainer\":{\"embarkationStatus\":false}},\"speed\":16383,\"speedConf\":127,\"speedLimiter\":true,\"stationID\":" + \
-                str(myID) + ",\"stationType\":" + \
-                str(stationType) + ",\"width\":30,\"yawRate\":0}"
-            # print(msg_payload)
-            # print(type(refCam))
-            msgNum += 1
-            clientsList[currClient].publish(
-                topic="vanetza/in/cam", payload=msg_payload)
-            time.sleep(0.1)
-            if msgNum == 3:
-                leader = leaderCheck(currClient)
-                msgNum = 0
-                if leader:
-                    currentLeader = currClient
-                    simulatorClient.publish(
-                        topic="leaders", payload="{\"leader\":" + str(currentLeader) + ",\"stationType\":" + str(stationType) + "}")
-                    print("I'm the leader: " + str(currClient))
-            # sleep(1)
+        time.sleep(0.1)
 
-    else:
-        while(True):
-            pass
+        if msgNum == 3:
+            leader = leaderCheck(currClient, mySurr, currentLeader.value)
+            msgNum = 0
+            if leader:
+                currentLeader.value = currClient
+                simulatorClient.publish(
+                    topic="leaders", payload="{\"leader\":" + str(currentLeader) + ",\"stationType\":" + str(stationType) + "}")
+                print("I'm the leader: " + str(currClient))
+
+        # sleep(1)
+
+
+def get_bearing(lat1, lat2, long1, long2):
+    brng = Geodesic.WGS84.Inverse(lat1, long1, lat2, long2)['azi1']
+    return brng
 
 
 def main():
@@ -455,18 +379,38 @@ def main():
 
     print(finalCoordsList)
     """
+    """
+    bearings = list()
+    for i in range(len(coordsList)-1):
+        bearings.append(calcBearing(
+            coordsList[i][0], coordsList[i+1][0], coordsList[i][1], coordsList[i+1][1]))
+    """
+    lat = 41.492443
+    lon = -95.891243
+    start_point = geopy.Point(lat, lon)
+
+    distance_mt = 138
+    bearing = 0
+    velocity = 500
+    totalSeconds = 10*60
+    coords = [start_point]
+
+    for i in range(1, totalSeconds):
+        for _ in range(10):
+            end_point = geopy.distance.geodesic(
+                meters=distance_mt).destination(coords[len(coords)-1], 90)
+
+            #print(end_point.latitude, end_point.longitude)
+            coords.append(end_point)
+    print(len(coords))
+
     pList = []
+    currentLeader = multiprocessing.Value('i', -1)
 
-    # RSU Process
-    p1 = multiprocessing.Process(
-        target=startSimul, args=(0, coordsList, 15))
-    p1.start()
-    pList.append(p1)
-
-    for i in range(1, len(clientsList)):
+    for i in range(0, 2):
         # OBU Process
         p = multiprocessing.Process(
-            target=startSimul, args=(i, coordsList, 7))
+            target=startSimul, args=(i, coords, 7, surroudingsList[i], currentLeader))
         p.start()
         pList.append(p)
 
@@ -477,7 +421,6 @@ def main():
     # both processes finished
     print("Done!")
 
-    client1.disconnect
     client2.disconnect
     client3.disconnect
     client4.disconnect
