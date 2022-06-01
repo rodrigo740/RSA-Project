@@ -5,9 +5,8 @@
  * 	`asn1c -fcompound-names -fincludes-quoted -no-gen-example -R`
  */
 
-#ifndef	_AlacarteContainer_H_
-#define	_AlacarteContainer_H_
-
+#ifndef _AlacarteContainer_H_
+#define _AlacarteContainer_H_
 
 #include "asn_application.h"
 
@@ -18,35 +17,37 @@
 #include "constr_SEQUENCE.h"
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
-/* Forward declarations */
-struct ImpactReductionContainer;
-struct RoadWorksContainerExtended;
-struct StationaryVehicleContainer;
+	/* Forward declarations */
+	struct ImpactReductionContainer;
+	struct RoadWorksContainerExtended;
+	struct StationaryVehicleContainer;
 
-/* AlacarteContainer */
-typedef struct AlacarteContainer {
-	LanePosition_t	*lanePosition;	/* OPTIONAL */
-	struct ImpactReductionContainer	*impactReduction;	/* OPTIONAL */
-	Temperature_t	*externalTemperature;	/* OPTIONAL */
-	struct RoadWorksContainerExtended	*roadWorks;	/* OPTIONAL */
-	PositioningSolutionType_t	*positioningSolution;	/* OPTIONAL */
-	struct StationaryVehicleContainer	*stationaryVehicle;	/* OPTIONAL */
-	/*
-	 * This type is extensible,
-	 * possible extensions are below.
-	 */
-	
-	/* Context for parsing across buffer boundaries */
-	asn_struct_ctx_t _asn_ctx;
-} AlacarteContainer_t;
+	/* AlacarteContainer */
+	typedef struct AlacarteContainer
+	{
+		LanePosition_t *lanePosition;						  /* OPTIONAL */
+		struct ImpactReductionContainer *impactReduction;	  /* OPTIONAL */
+		Temperature_t *externalTemperature;					  /* OPTIONAL */
+		struct RoadWorksContainerExtended *roadWorks;		  /* OPTIONAL */
+		PositioningSolutionType_t *positioningSolution;		  /* OPTIONAL */
+		struct StationaryVehicleContainer *stationaryVehicle; /* OPTIONAL */
+		/*
+		 * This type is extensible,
+		 * possible extensions are below.
+		 */
 
-/* Implementation */
-extern asn_TYPE_descriptor_t asn_DEF_AlacarteContainer;
-extern asn_SEQUENCE_specifics_t asn_SPC_AlacarteContainer_specs_1;
-extern asn_TYPE_member_t asn_MBR_AlacarteContainer_1[6];
+		/* Context for parsing across buffer boundaries */
+		asn_struct_ctx_t _asn_ctx;
+	} AlacarteContainer_t;
+
+	/* Implementation */
+	extern asn_TYPE_descriptor_t asn_DEF_AlacarteContainer;
+	extern asn_SEQUENCE_specifics_t asn_SPC_AlacarteContainer_specs_1;
+	extern asn_TYPE_member_t asn_MBR_AlacarteContainer_1[6];
 
 #ifdef __cplusplus
 }
@@ -57,5 +58,5 @@ extern asn_TYPE_member_t asn_MBR_AlacarteContainer_1[6];
 #include "RoadWorksContainerExtended.h"
 #include "StationaryVehicleContainer.h"
 
-#endif	/* _AlacarteContainer_H_ */
+#endif /* _AlacarteContainer_H_ */
 #include "asn_internal.h"
