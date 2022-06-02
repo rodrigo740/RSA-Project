@@ -258,7 +258,7 @@ def leaderCheck(currClient, mySurroudings, currentLeader):
     return res
 
 
-def startSimul(currClient, coordsList, stationType, mySurr, currentLeader, velocity):
+def startSimul(currClient, coordsList, stationType, mySurr, currentLeader, velocity, checkTime):
     print("Client: " + str(currClient) + " has started the simulation")
     # load reference CAM
     """
@@ -325,7 +325,7 @@ def startSimul(currClient, coordsList, stationType, mySurr, currentLeader, veloc
         msg_payload = "{\"accEngaged\":true,\"acceleration\":0,\"altitude\":800001,\"altitudeConf\":15,\"brakePedal\":true,\"collisionWarning\":true,\"cruiseControl\":true,\"curvature\":1023,\"driveDirection\":\"FORWARD\",\"emergencyBrake\":true,\"gasPedal\":false,\"heading\":90,\"headingConf\":127,\"latitude\":" + \
             str(lat) + ",\"length\":100,\"longitude\":" + \
             str(lng) + ",\"semiMajorConf\":4095,\"semiMajorOrient\":3601,\"semiMinorConf\":4095,\"specialVehicle\":{\"publicTransportContainer\":{\"embarkationStatus\":false}},\"speed\":" + \
-            str(velocity) + ",\"speedConf\":127,\"speedLimiter\":true,\"stationID\":" + \
+            str(velocity.value) + ",\"speedConf\":127,\"speedLimiter\":true,\"stationID\":" + \
             str(currClient) + ",\"stationType\":" + \
             str(stationType) + ",\"width\":30,\"yawRate\":0}"
 
@@ -336,12 +336,14 @@ def startSimul(currClient, coordsList, stationType, mySurr, currentLeader, veloc
 
         time.sleep(0.1)
 
-        if msgNum == 30:
+        if msgNum == checkTime:
             if currentLeader.value != currClient:
                 leader = leaderCheck(currClient, mySurr, currentLeader.value)
                 msgNum = 0
                 if leader:
                     currentLeader.value = currClient
+                    checkTime.value = 100
+                    velocity.value += 20
                     simulatorClient.publish(
                         topic="leaders", payload="{\"leader\":" + str(currClient) + ",\"stationType\":" + str(stationType) + "}")
                     denm_payload = "{\
@@ -379,12 +381,17 @@ def startSimul(currClient, coordsList, stationType, mySurr, currentLeader, veloc
                             \"lanePosition\": 50, \
                             \"externalTemperature\": 50, \
                             \"roadWorks\": { \
-                            \"speedLimit\":" + str(velocity+20) + "}, \
-                            \"positioningSolution\": 50, \
+                            \"speedLimit\":" + str(velocity.value) + "}, \
+                            \"positioningSolution\":" + str(checkTime.value) + ", \
                             \"stationaryVehicle\": { \
                             \"numberOfOccupants\": 50} \
                         } \
                     }"
+                    # id
+                    # gas
+                    # speed
+                    # check time
+                    #
                     clientsList[currClient].publish(
                         topic="vanetza/in/denm", payload=denm_payload)
                     print("I'm the leader: " + str(currClient))
@@ -445,11 +452,13 @@ def main():
 
     pList = []
     currentLeader = multiprocessing.Value('i', -1)
+    velocitySimul = multiprocessing.Value('i', velocity)
+    checkTime = multiprocessing.Value('i', 30)
 
     for i in range(0, 4):
         # OBU Process
         p = multiprocessing.Process(
-            target=startSimul, args=(i, coords, 7, surroudingsList[i], currentLeader, velocity))
+            target=startSimul, args=(i, coords, 7, surroudingsList[i], currentLeader, velocitySimul, checkTime))
         p.start()
         pList.append(p)
 
