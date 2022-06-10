@@ -12,28 +12,44 @@ from collections import defaultdict
 import geopy
 import geopy.distance
 from geographiclib.geodesic import Geodesic
-
+from multiprocessing import Lock
 
 const = pow(10, 7)
+
+vals1 = {"speed": 100, "checkTime": 10}
+vals2 = {"speed": 100, "checkTime": 10}
+vals3 = {"speed": 100, "checkTime": 10}
+vals4 = {"speed": 100, "checkTime": 10}
+valsList = [vals1, vals2, vals3, vals4]
 
 mySurroudings2 = dict()
 mySurroudings3 = dict()
 mySurroudings4 = dict()
 mySurroudings5 = dict()
 
+denmInfo2 = dict()
+denmInfo3 = dict()
+denmInfo4 = dict()
+denmInfo5 = dict()
+
 mySurroudings2 = defaultdict(lambda: [], mySurroudings2)
 mySurroudings3 = defaultdict(lambda: [], mySurroudings3)
 mySurroudings4 = defaultdict(lambda: [], mySurroudings4)
 mySurroudings5 = defaultdict(lambda: [], mySurroudings5)
 
+denmInfo2 = defaultdict(lambda: (), denmInfo2)
+denmInfo3 = defaultdict(lambda: (), denmInfo3)
+denmInfo4 = defaultdict(lambda: (), denmInfo4)
+denmInfo5 = defaultdict(lambda: (), denmInfo5)
+
 surroudingsList = [mySurroudings2, mySurroudings3,
                    mySurroudings4, mySurroudings5]
 
 
-client2 = mqtt.Client(userdata=mySurroudings2)
-client3 = mqtt.Client(userdata=mySurroudings3)
-client4 = mqtt.Client(userdata=mySurroudings4)
-client5 = mqtt.Client(userdata=mySurroudings5)
+client2 = mqtt.Client(userdata=(mySurroudings2, denmInfo2, vals1))
+client3 = mqtt.Client(userdata=(mySurroudings3, denmInfo3, vals2))
+client4 = mqtt.Client(userdata=(mySurroudings4, denmInfo4, vals3))
+client5 = mqtt.Client(userdata=(mySurroudings5, denmInfo5, vals4))
 clientsList = [client2, client3, client4, client5]
 
 simulatorClient = mqtt.Client()
@@ -76,21 +92,28 @@ def on_connect2(client, userdata, flags, rc):
     if rc == 0:
         client2.subscribe("vanetza/out/cam")
         client2.subscribe("vanetza/in/cam")
-        client2.subscribe("vanetza/in/denm")
+        # client2.subscribe("vanetza/in/denm")
         client2.subscribe("vanetza/out/denm")
 
 # The callback for when a PUBLISH message is received from the server.
 
 
 def on_message2(client, userdata, msg):
-    # print("OBU 1: ")
     payload = json.loads(msg.payload)
-    # print(str(payload))
-    if "management" in payload:
-        print(str(payload))
+    str_payload = str(payload)
+    # if managment in payload == denm received else cam
+    if "management" in str_payload:
+        userdata[1][str(payload["fields"]["denm"]["management"]["actionID"]
+                        ['originatingStationID'])] = ()
+        userdata[2]["speed"] = int(str(payload["fields"]["denm"]["alacarte"]
+                                       ['roadWorks']['speedLimit']))
+        userdata[2]["checkTime"] = int(str(payload["fields"]["denm"]["alacarte"]
+                                           ['positioningSolution']))
+    elif "denm" in str_payload:
+        print("Not mine")
     else:
         pos = (payload["latitude"], payload["longitude"], payload["heading"])
-        userdata[str(payload["stationID"])].append(pos)
+        userdata[0][str(payload["stationID"])].append(pos)
 
     # print(userdata)
     # print(payload)
@@ -102,16 +125,30 @@ def on_connect3(client, userdata, flags, rc):
     if rc == 0:
         client3.subscribe("vanetza/out/cam")
         client3.subscribe("vanetza/in/cam")
+        # client3.subscribe("vanetza/in/denm")
         client3.subscribe("vanetza/out/denm")
 
 # The callback for when a PUBLISH message is received from the server.
 
 
 def on_message3(client, userdata, msg):
-    # print("OBU 2: ")
     payload = json.loads(msg.payload)
-    pos = (payload["latitude"], payload["longitude"], payload["heading"])
-    userdata[str(payload["stationID"])].append(pos)
+    str_payload = str(payload)
+    # print(payload)
+    # if managment in payload == denm received else cam
+    if "management" in str_payload:
+        userdata[1][str(payload["fields"]["denm"]["management"]["actionID"]
+                        ['originatingStationID'])] = ()
+        userdata[2]["speed"] = int(str(payload["fields"]["denm"]["alacarte"]
+                                       ['roadWorks']['speedLimit']))
+        userdata[2]["checkTime"] = int(str(payload["fields"]["denm"]["alacarte"]
+                                           ['positioningSolution']))
+    elif "denm" in str_payload:
+        print("Not mine")
+    else:
+
+        pos = (payload["latitude"], payload["longitude"], payload["heading"])
+        userdata[0][str(payload["stationID"])].append(pos)
 
 # The callback for when the client receives a CONNACK response from the server.
 
@@ -121,16 +158,28 @@ def on_connect4(client, userdata, flags, rc):
     if rc == 0:
         client4.subscribe("vanetza/out/cam")
         client4.subscribe("vanetza/in/cam")
+        client4.subscribe("vanetza/in/denm")
         client4.subscribe("vanetza/out/denm")
 
 # The callback for when a PUBLISH message is received from the server.
 
 
 def on_message4(client, userdata, msg):
-    # print("OBU 2: ")
     payload = json.loads(msg.payload)
-    pos = (payload["latitude"], payload["longitude"], payload["heading"])
-    userdata[str(payload["stationID"])].append(pos)
+    str_payload = str(payload)
+    # if managment in payload == denm received else cam
+    if "management" in str_payload:
+        userdata[1][str(payload["fields"]["denm"]["management"]["actionID"]
+                        ['originatingStationID'])] = ()
+        userdata[2]["speed"] = int(str(payload["fields"]["denm"]["alacarte"]
+                                       ['roadWorks']['speedLimit']))
+        userdata[2]["checkTime"] = int(str(payload["fields"]["denm"]["alacarte"]
+                                           ['positioningSolution']))
+    elif "denm" in str_payload:
+        print("Not mine")
+    else:
+        pos = (payload["latitude"], payload["longitude"], payload["heading"])
+        userdata[0][str(payload["stationID"])].append(pos)
 
 
 # The callback for when the client receives a CONNACK response from the server.
@@ -139,16 +188,30 @@ def on_connect5(client, userdata, flags, rc):
     if rc == 0:
         client5.subscribe("vanetza/out/cam")
         client5.subscribe("vanetza/in/cam")
+        client5.subscribe("vanetza/in/denm")
         client5.subscribe("vanetza/out/denm")
 
 # The callback for when a PUBLISH message is received from the server.
 
 
 def on_message5(client, userdata, msg):
-    # print("OBU 2: ")
     payload = json.loads(msg.payload)
-    pos = (payload["latitude"], payload["longitude"], payload["heading"])
-    userdata[str(payload["stationID"])].append(pos)
+    # print(payload)
+    str_payload = str(payload)
+    # if managment in payload == denm received else cam
+    if "management" in str_payload:
+        print(payload)
+        userdata[1][str(payload["fields"]["denm"]["management"]["actionID"]
+                        ['originatingStationID'])] = ()
+        userdata[2]["speed"] = int(str(payload["fields"]["denm"]["alacarte"]
+                                       ['roadWorks']['speedLimit']))
+        userdata[2]["checkTime"] = int(str(payload["fields"]["denm"]["alacarte"]
+                                           ['positioningSolution']))
+    elif "denm" in str_payload:
+        print("Not mine")
+    else:
+        pos = (payload["latitude"], payload["longitude"], payload["heading"])
+        userdata[0][str(payload["stationID"])].append(pos)
 
 
 def parseGPX(gpxFile):
@@ -258,13 +321,9 @@ def leaderCheck(currClient, mySurroudings, currentLeader):
     return res
 
 
-def startSimul(currClient, coordsList, stationType, mySurr, currentLeader, velocity, checkTime):
+def startSimul(currClient, coordsList, stationType, mySurr, currentLeader, vals):
     print("Client: " + str(currClient) + " has started the simulation")
-    # load reference CAM
-    """
-    with open('utils/in_cam.json') as f:
-        refCam = json.load(f)
-    """
+
     # Connecting to the broker
     if currClient == 0:
 
@@ -299,7 +358,7 @@ def startSimul(currClient, coordsList, stationType, mySurr, currentLeader, veloc
         client5.connect("192.168.98.50")
         client5.loop_start()
 
-    # Wait 0.2 seconds
+    # Wait
     if currClient == 1:
         time.sleep(1)
     elif currClient == 2:
@@ -314,21 +373,18 @@ def startSimul(currClient, coordsList, stationType, mySurr, currentLeader, veloc
     for coords in coordsList:
         lat = coords[0]*const
         lng = coords[1]*const
-        # refCam["latitude"] = int(lat)
-        # refCam["longitude"] = int(lng)
-        """
-        msg_payload = str(refCam).replace("T", "t").replace(
-            "F", "f").replace("\'", "\"").replace("fORWARD", "FORWARD")
 
-        msg_payload = str(refCam)
-        """
+        velocity = vals["speed"]
+        checkTime = vals["checkTime"]
+
         msg_payload = "{\"accEngaged\":true,\"acceleration\":0,\"altitude\":800001,\"altitudeConf\":15,\"brakePedal\":true,\"collisionWarning\":true,\"cruiseControl\":true,\"curvature\":1023,\"driveDirection\":\"FORWARD\",\"emergencyBrake\":true,\"gasPedal\":false,\"heading\":90,\"headingConf\":127,\"latitude\":" + \
             str(lat) + ",\"length\":100,\"longitude\":" + \
             str(lng) + ",\"semiMajorConf\":4095,\"semiMajorOrient\":3601,\"semiMinorConf\":4095,\"specialVehicle\":{\"publicTransportContainer\":{\"embarkationStatus\":false}},\"speed\":" + \
-            str(velocity.value) + ",\"speedConf\":127,\"speedLimiter\":true,\"stationID\":" + \
+            str(velocity) + ",\"speedConf\":127,\"speedLimiter\":true,\"stationID\":" + \
             str(currClient) + ",\"stationType\":" + \
             str(stationType) + ",\"width\":30,\"yawRate\":0}"
-
+        print("OBU" + str(currClient) + ", vel: " +
+              str(velocity) + ", time: " + str(checkTime))
         msgNum += 1
         clientsList[currClient].publish(
             topic="vanetza/in/cam", payload=msg_payload)
@@ -336,14 +392,15 @@ def startSimul(currClient, coordsList, stationType, mySurr, currentLeader, veloc
 
         time.sleep(0.1)
 
+        #print("OBU: " + str(currClient), end="\r")
+        # print("\n")
+
         if msgNum == checkTime:
+            msgNum = 0
             if currentLeader.value != currClient:
                 leader = leaderCheck(currClient, mySurr, currentLeader.value)
-                msgNum = 0
                 if leader:
                     currentLeader.value = currClient
-                    checkTime.value = 100
-                    velocity.value += 20
                     simulatorClient.publish(
                         topic="leaders", payload="{\"leader\":" + str(currClient) + ",\"stationType\":" + str(stationType) + "}")
                     denm_payload = "{\
@@ -378,11 +435,11 @@ def startSimul(currClient, coordsList, stationType, mySurr, currentLeader, veloc
                             }\
                         },\
                         \"alacarte\": { \
-                            \"lanePosition\": 50, \
+                            \"lanePosition\": 3, \
                             \"externalTemperature\": 50, \
                             \"roadWorks\": { \
-                            \"speedLimit\":" + str(velocity.value) + "}, \
-                            \"positioningSolution\":" + str(checkTime.value) + ", \
+                            \"speedLimit\":" + str(velocity + 20) + "}, \
+                            \"positioningSolution\":" + str(3) + ", \
                             \"stationaryVehicle\": { \
                             \"numberOfOccupants\": 50} \
                         } \
@@ -392,6 +449,10 @@ def startSimul(currClient, coordsList, stationType, mySurr, currentLeader, veloc
                     # speed
                     # check time
                     #
+
+                    vals["speed"] = velocity + 20
+                    vals["checkTime"] = 100
+
                     clientsList[currClient].publish(
                         topic="vanetza/in/denm", payload=denm_payload)
                     print("I'm the leader: " + str(currClient))
@@ -446,19 +507,17 @@ def main():
             end_point = geopy.distance.geodesic(
                 meters=distance_mt).destination(coords[len(coords)-1], 90)
 
-            # print(end_point.latitude, end_point.longitude)
+            #print(end_point.latitude, end_point.longitude)
             coords.append(end_point)
     print(len(coords))
 
     pList = []
     currentLeader = multiprocessing.Value('i', -1)
-    velocitySimul = multiprocessing.Value('i', velocity)
-    checkTime = multiprocessing.Value('i', 30)
 
     for i in range(0, 4):
         # OBU Process
         p = multiprocessing.Process(
-            target=startSimul, args=(i, coords, 7, surroudingsList[i], currentLeader, velocitySimul, checkTime))
+            target=startSimul, args=(i, coords, 7, surroudingsList[i], currentLeader, valsList[i]))
         p.start()
         pList.append(p)
 
