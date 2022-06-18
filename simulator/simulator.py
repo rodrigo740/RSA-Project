@@ -13,6 +13,7 @@ import geopy
 import geopy.distance
 from geographiclib.geodesic import Geodesic
 from multiprocessing import Lock
+import pyproj
 
 const = pow(10, 7)
 
@@ -158,7 +159,7 @@ def on_connect4(client, userdata, flags, rc):
     if rc == 0:
         client4.subscribe("vanetza/out/cam")
         client4.subscribe("vanetza/in/cam")
-        client4.subscribe("vanetza/in/denm")
+        # client4.subscribe("vanetza/in/denm")
         client4.subscribe("vanetza/out/denm")
 
 # The callback for when a PUBLISH message is received from the server.
@@ -321,7 +322,7 @@ def leaderCheck(currClient, mySurroudings, currentLeader):
     return res
 
 
-def startSimul(currClient, coordsList, stationType, mySurr, currentLeader, vals):
+def startSimul(currClient, startPoint, distances, bearings, stationType, mySurr, currentLeader, vals):
     print("Client: " + str(currClient) + " has started the simulation")
 
     # Connecting to the broker
@@ -366,31 +367,34 @@ def startSimul(currClient, coordsList, stationType, mySurr, currentLeader, vals)
     elif currClient == 3:
         time.sleep(3)
 
+    interval = 0
+    curr_distance = 0
     msgNum = 0
     simulatorClient.connect("127.0.0.1", port=1883)
     simulatorClient.loop_start()
+    print("Start Pos: " + str(startPoint))
+    lat = startPoint[0]
+    lng = startPoint[1]
 
-    for coords in coordsList:
-        lat = coords[0]*const
-        lng = coords[1]*const
+    velocity = vals["speed"]
+    checkTime = vals["checkTime"]
 
-        velocity = vals["speed"]
-        checkTime = vals["checkTime"]
+    msg_payload = "{\"accEngaged\":true,\"acceleration\":0,\"altitude\":800001,\"altitudeConf\":15,\"brakePedal\":true,\"collisionWarning\":true,\"cruiseControl\":true,\"curvature\":1023,\"driveDirection\":\"FORWARD\",\"emergencyBrake\":true,\"gasPedal\":false,\"heading\":90,\"headingConf\":127,\"latitude\":" + \
+        str(lat) + ",\"length\":100,\"longitude\":" + \
+        str(lng) + ",\"semiMajorConf\":4095,\"semiMajorOrient\":3601,\"semiMinorConf\":4095,\"specialVehicle\":{\"publicTransportContainer\":{\"embarkationStatus\":false}},\"speed\":" + \
+        str(velocity) + ",\"speedConf\":127,\"speedLimiter\":true,\"stationID\":" + \
+        str(currClient) + ",\"stationType\":" + \
+        str(stationType) + ",\"width\":30,\"yawRate\":0}"
+    print("OBU" + str(currClient) + ", vel: " +
+          str(velocity) + ", time: " + str(checkTime))
+    msgNum += 1
+    clientsList[currClient].publish(
+        topic="vanetza/in/cam", payload=msg_payload)
+    simulatorClient.publish(topic="cams", payload=msg_payload)
 
-        msg_payload = "{\"accEngaged\":true,\"acceleration\":0,\"altitude\":800001,\"altitudeConf\":15,\"brakePedal\":true,\"collisionWarning\":true,\"cruiseControl\":true,\"curvature\":1023,\"driveDirection\":\"FORWARD\",\"emergencyBrake\":true,\"gasPedal\":false,\"heading\":90,\"headingConf\":127,\"latitude\":" + \
-            str(lat) + ",\"length\":100,\"longitude\":" + \
-            str(lng) + ",\"semiMajorConf\":4095,\"semiMajorOrient\":3601,\"semiMinorConf\":4095,\"specialVehicle\":{\"publicTransportContainer\":{\"embarkationStatus\":false}},\"speed\":" + \
-            str(velocity) + ",\"speedConf\":127,\"speedLimiter\":true,\"stationID\":" + \
-            str(currClient) + ",\"stationType\":" + \
-            str(stationType) + ",\"width\":30,\"yawRate\":0}"
-        print("OBU" + str(currClient) + ", vel: " +
-              str(velocity) + ", time: " + str(checkTime))
-        msgNum += 1
-        clientsList[currClient].publish(
-            topic="vanetza/in/cam", payload=msg_payload)
-        simulatorClient.publish(topic="cams", payload=msg_payload)
+    time.sleep(0.1)
 
-        time.sleep(0.1)
+    while True:
 
         #print("OBU: " + str(currClient), end="\r")
         # print("\n")
@@ -412,8 +416,8 @@ def startSimul(currClient, coordsList, stationType, mySurr, currentLeader, vals)
                             \"detectionTime\": 1626453837.658,\
                             \"referenceTime\": 1626453837.658,\
                             \"eventPosition\": {\
-                                \"latitude\":" + str(lat) + ",\
-                                \"longitude\": " + str(lng) + ",\
+                                \"latitude\":" + str(lat*const) + ",\
+                                \"longitude\": " + str(lng*const) + ",\
                                 \"positionConfidenceEllipse\": {\
                                     \"semiMajorConfidence\": 0,\
                                     \"semiMinorConfidence\": 0,\
@@ -457,12 +461,53 @@ def startSimul(currClient, coordsList, stationType, mySurr, currentLeader, vals)
                         topic="vanetza/in/denm", payload=denm_payload)
                     print("I'm the leader: " + str(currClient))
 
-    # sleep(1)
+        # Next position calculation
+        velocity = vals["speed"]
+        checkTime = vals["checkTime"]
+        distance_mt = velocity * 0.1
+        curr_distance += distance_mt
+        end_point = geopy.distance.geodesic(
+            meters=distance_mt).destination((lat, lng), bearings[interval])
+
+        lat = end_point.latitude
+        lng = end_point.longitude
+
+        msg_payload = "{\"accEngaged\":true,\"acceleration\":0,\"altitude\":800001,\"altitudeConf\":15,\"brakePedal\":true,\"collisionWarning\":true,\"cruiseControl\":true,\"curvature\":1023,\"driveDirection\":\"FORWARD\",\"emergencyBrake\":true,\"gasPedal\":false,\"heading\":90,\"headingConf\":127,\"latitude\":" + \
+            str(lat*const) + ",\"length\":100,\"longitude\":" + \
+            str(lng*const) + ",\"semiMajorConf\":4095,\"semiMajorOrient\":3601,\"semiMinorConf\":4095,\"specialVehicle\":{\"publicTransportContainer\":{\"embarkationStatus\":false}},\"speed\":" + \
+            str(velocity) + ",\"speedConf\":127,\"speedLimiter\":true,\"stationID\":" + \
+            str(currClient) + ",\"stationType\":" + \
+            str(stationType) + ",\"width\":30,\"yawRate\":0}"
+        print("OBU" + str(currClient) + ", vel: " +
+              str(velocity) + ", time: " + str(checkTime))
+        msgNum += 1
+        clientsList[currClient].publish(
+            topic="vanetza/in/cam", payload=msg_payload)
+        simulatorClient.publish(topic="cams", payload=msg_payload)
+
+        if curr_distance >= distances[interval]:
+            interval += 1
+            curr_distance = 0
+            if interval == len(bearings):
+                break
+
+        time.sleep(0.1)
 
 
 def get_bearing(lat1, lat2, long1, long2):
-    brng = Geodesic.WGS84.Inverse(lat1, long1, lat2, long2)['azi1']
-    return brng
+    """
+    brng = Geodesic.WGS84.Inverse(lat1, long1, lat2, long2)['WGS84']
+    print(brng)
+    """
+
+    geodesic = pyproj.Geod(ellps='WGS84')
+    fwd_azimuth, back_azimuth, distance = geodesic.inv(
+        long1, lat1, long2, lat2)
+    print(fwd_azimuth)
+    if (fwd_azimuth == 180):
+        print("Coord1: (" + str(lat1) + "," + str(long1) + ")")
+        print("Coord2: (" + str(lat2) + "," + str(long2) + ")")
+    return fwd_azimuth
 
 
 def main():
@@ -475,9 +520,20 @@ def main():
                                                """)
 
     # get path
-    gpxFile = "route-1.gpx"
+    gpxFile = "route2.gpx"
     coordsList = parseGPX(gpxFile)
     finalCoordsList = []
+    distances = []
+    bearings = []
+    for i in range(0, int((len(coordsList)-1))):
+        if coordsList[i] != coordsList[i+1]:
+            distances.append(geopy.distance.geodesic(
+                coordsList[i], coordsList[i+1]).m)
+            bearings.append(get_bearing(
+                coordsList[i][0], coordsList[i+1][0], coordsList[i][1], coordsList[i+1][1]))
+        # print(bearings[i])
+        # print(distances[i])
+
     """
     for i in range(0, len(coordsList)-1):
         finalCoordsList.append(coordsList[i])
@@ -491,9 +547,9 @@ def main():
         bearings.append(calcBearing(
             coordsList[i][0], coordsList[i+1][0], coordsList[i][1], coordsList[i+1][1]))
     """
-    lat = 41.492443
-    lon = -95.891243
-    start_point = geopy.Point(lat, lon)
+    lat = 42.48252
+    lon = -95.98588
+    start_point = coordsList[0]
 
     minutes = 10
     velocity = 120
@@ -517,7 +573,7 @@ def main():
     for i in range(0, 4):
         # OBU Process
         p = multiprocessing.Process(
-            target=startSimul, args=(i, coords, 7, surroudingsList[i], currentLeader, valsList[i]))
+            target=startSimul, args=(i, start_point, distances, bearings, 7, surroudingsList[i], currentLeader, valsList[i]))
         p.start()
         pList.append(p)
 
