@@ -1,4 +1,5 @@
 from email.policy import default
+from turtle import speed
 from anyio import Any
 import paho.mqtt.client as mqtt
 import signal
@@ -12,15 +13,23 @@ from collections import defaultdict
 import geopy
 import geopy.distance
 from geographiclib.geodesic import Geodesic
-from multiprocessing import Lock
 import pyproj
+import requests
+import polyline
+
+
+# speed / gas / checktime
+sync_stats = {
+    "100": [120, 60, 300],
+    "101": []
+}
 
 const = pow(10, 7)
 
-vals1 = {"speed": 100, "checkTime": 10}
-vals2 = {"speed": 100, "checkTime": 10}
-vals3 = {"speed": 100, "checkTime": 10}
-vals4 = {"speed": 100, "checkTime": 10}
+vals1 = {"speed": 100, "checkTime": 10, "groupID": -1}
+vals2 = {"speed": 100, "checkTime": 10, "groupID": -1}
+vals3 = {"speed": 100, "checkTime": 10, "groupID": -1}
+vals4 = {"speed": 100, "checkTime": 10, "groupID": -1}
 valsList = [vals1, vals2, vals3, vals4]
 
 mySurroudings2 = dict()
@@ -93,7 +102,7 @@ def on_connect2(client, userdata, flags, rc):
     if rc == 0:
         client2.subscribe("vanetza/out/cam")
         client2.subscribe("vanetza/in/cam")
-        # client2.subscribe("vanetza/in/denm")
+        client2.subscribe("vanetza/in/denm")
         client2.subscribe("vanetza/out/denm")
 
 # The callback for when a PUBLISH message is received from the server.
@@ -103,15 +112,21 @@ def on_message2(client, userdata, msg):
     payload = json.loads(msg.payload)
     str_payload = str(payload)
     # if managment in payload == denm received else cam
-    if "management" in str_payload:
+    if "fields" in str_payload:
+        # print(str_payload)
+
         userdata[1][str(payload["fields"]["denm"]["management"]["actionID"]
                         ['originatingStationID'])] = ()
-        userdata[2]["speed"] = int(str(payload["fields"]["denm"]["alacarte"]
-                                       ['roadWorks']['speedLimit']))
-        userdata[2]["checkTime"] = int(str(payload["fields"]["denm"]["alacarte"]
-                                           ['positioningSolution']))
-    elif "denm" in str_payload:
-        print("Not mine")
+        userdata[2]["groupID"] = payload["fields"]["denm"]["management"]["actionID"]
+        ['originatingStationID']
+        userdata[2]["speed"] = sync_stats[str(
+            payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][0]
+        userdata[2]["checkTime"] = sync_stats[str(
+            payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][2]
+    elif "management" in str_payload:
+        userdata[1][str(payload["management"]["actionID"]
+                        ['originatingStationID'])] = ()
+        userdata[2]["groupID"] = payload["management"]["actionID"]['originatingStationID']
     else:
         pos = (payload["latitude"], payload["longitude"], payload["heading"])
         userdata[0][str(payload["stationID"])].append(pos)
@@ -126,7 +141,7 @@ def on_connect3(client, userdata, flags, rc):
     if rc == 0:
         client3.subscribe("vanetza/out/cam")
         client3.subscribe("vanetza/in/cam")
-        # client3.subscribe("vanetza/in/denm")
+        client3.subscribe("vanetza/in/denm")
         client3.subscribe("vanetza/out/denm")
 
 # The callback for when a PUBLISH message is received from the server.
@@ -140,12 +155,16 @@ def on_message3(client, userdata, msg):
     if "management" in str_payload:
         userdata[1][str(payload["fields"]["denm"]["management"]["actionID"]
                         ['originatingStationID'])] = ()
-        userdata[2]["speed"] = int(str(payload["fields"]["denm"]["alacarte"]
-                                       ['roadWorks']['speedLimit']))
-        userdata[2]["checkTime"] = int(str(payload["fields"]["denm"]["alacarte"]
-                                           ['positioningSolution']))
+        userdata[2]["groupID"] = payload["fields"]["denm"]["management"]["actionID"]
+        ['originatingStationID']
+        userdata[2]["speed"] = sync_stats[str(
+            payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][0]
+        userdata[2]["checkTime"] = sync_stats[str(
+            payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][2]
     elif "denm" in str_payload:
-        print("Not mine")
+        userdata[1][str(payload["management"]["actionID"]
+                        ['originatingStationID'])] = ()
+        userdata[2]["groupID"] = payload["management"]["actionID"]['originatingStationID']
     else:
 
         pos = (payload["latitude"], payload["longitude"], payload["heading"])
@@ -159,7 +178,7 @@ def on_connect4(client, userdata, flags, rc):
     if rc == 0:
         client4.subscribe("vanetza/out/cam")
         client4.subscribe("vanetza/in/cam")
-        # client4.subscribe("vanetza/in/denm")
+        client4.subscribe("vanetza/in/denm")
         client4.subscribe("vanetza/out/denm")
 
 # The callback for when a PUBLISH message is received from the server.
@@ -172,12 +191,16 @@ def on_message4(client, userdata, msg):
     if "management" in str_payload:
         userdata[1][str(payload["fields"]["denm"]["management"]["actionID"]
                         ['originatingStationID'])] = ()
-        userdata[2]["speed"] = int(str(payload["fields"]["denm"]["alacarte"]
-                                       ['roadWorks']['speedLimit']))
-        userdata[2]["checkTime"] = int(str(payload["fields"]["denm"]["alacarte"]
-                                           ['positioningSolution']))
+        userdata[2]["groupID"] = payload["fields"]["denm"]["management"]["actionID"]
+        ['originatingStationID']
+        userdata[2]["speed"] = sync_stats[str(
+            payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][0]
+        userdata[2]["checkTime"] = sync_stats[str(
+            payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][2]
     elif "denm" in str_payload:
-        print("Not mine")
+        userdata[1][str(payload["management"]["actionID"]
+                        ['originatingStationID'])] = ()
+        userdata[2]["groupID"] = payload["management"]["actionID"]['originatingStationID']
     else:
         pos = (payload["latitude"], payload["longitude"], payload["heading"])
         userdata[0][str(payload["stationID"])].append(pos)
@@ -201,15 +224,19 @@ def on_message5(client, userdata, msg):
     str_payload = str(payload)
     # if managment in payload == denm received else cam
     if "management" in str_payload:
-        print(payload)
         userdata[1][str(payload["fields"]["denm"]["management"]["actionID"]
                         ['originatingStationID'])] = ()
-        userdata[2]["speed"] = int(str(payload["fields"]["denm"]["alacarte"]
-                                       ['roadWorks']['speedLimit']))
-        userdata[2]["checkTime"] = int(str(payload["fields"]["denm"]["alacarte"]
-                                           ['positioningSolution']))
+        userdata[2]["groupID"] = payload["fields"]["denm"]["management"]["actionID"]
+        ['originatingStationID']
+        userdata[2]["speed"] = sync_stats[str(
+            payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][0]
+        userdata[2]["checkTime"] = sync_stats[str(
+            payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][2]
     elif "denm" in str_payload:
-        print("Not mine")
+        userdata[1][str(payload["management"]["actionID"]
+                        ['originatingStationID'])] = ()
+        userdata[2]["groupID"] = payload["management"]["actionID"]['originatingStationID']
+
     else:
         pos = (payload["latitude"], payload["longitude"], payload["heading"])
         userdata[0][str(payload["stationID"])].append(pos)
@@ -232,28 +259,6 @@ def parseGPX(gpxFile):
                 coordsList.append((point.latitude, point.longitude))
 
     return coordsList
-
-# FIXME!
-
-
-def interPoint(point1, point2):
-    lat1 = point1[0]
-    lon1 = point1[1]
-
-    lat2 = point2[0]
-    lon2 = point2[1]
-
-    f = 0
-    d = 1/10
-    A = math.sin((1-f)*d)/math.sin(d)
-    B = math.sin(f*d)/math.sin(d)
-    x = A*math.cos(lat1)*math.cos(lon1) + B*math.cos(lat2)*math.cos(lon2)
-    y = A*math.cos(lat1)*math.sin(lon1) + B*math.cos(lat2)*math.sin(lon2)
-    z = A*math.sin(lat1) + B*math.sin(lat2)
-    lat = math.atan2(z, math.sqrt(pow(x, 2)+pow(y, 2)))
-    lon = math.atan2(y, x)
-
-    return (lat1 + lat, lon1 + lon)
 
 
 def calcBearing(lat1, lon1, lat2, lon2):
@@ -322,7 +327,7 @@ def leaderCheck(currClient, mySurroudings, currentLeader):
     return res
 
 
-def startSimul(currClient, startPoint, distances, bearings, stationType, mySurr, currentLeader, vals):
+def startSimul(currClient, startPoint, distances, bearings, stationType, mySurr, currentLeader, vals, sync_stats):
     print("Client: " + str(currClient) + " has started the simulation")
 
     # Connecting to the broker
@@ -372,7 +377,7 @@ def startSimul(currClient, startPoint, distances, bearings, stationType, mySurr,
     msgNum = 0
     simulatorClient.connect("127.0.0.1", port=1883)
     simulatorClient.loop_start()
-    print("Start Pos: " + str(startPoint))
+
     lat = startPoint[0]
     lng = startPoint[1]
 
@@ -385,8 +390,8 @@ def startSimul(currClient, startPoint, distances, bearings, stationType, mySurr,
         str(velocity) + ",\"speedConf\":127,\"speedLimiter\":true,\"stationID\":" + \
         str(currClient) + ",\"stationType\":" + \
         str(stationType) + ",\"width\":30,\"yawRate\":0}"
-    print("OBU" + str(currClient) + ", vel: " +
-          str(velocity) + ", time: " + str(checkTime))
+    # print("OBU" + str(currClient) + ", vel: " +
+    #      str(velocity) + ", time: " + str(checkTime))
     msgNum += 1
     clientsList[currClient].publish(
         topic="vanetza/in/cam", payload=msg_payload)
@@ -401,97 +406,83 @@ def startSimul(currClient, startPoint, distances, bearings, stationType, mySurr,
 
         if msgNum == checkTime:
             msgNum = 0
-            if currentLeader.value != currClient:
-                leader = leaderCheck(currClient, mySurr, currentLeader.value)
-                if leader:
-                    currentLeader.value = currClient
-                    simulatorClient.publish(
-                        topic="leaders", payload="{\"leader\":" + str(currClient) + ",\"stationType\":" + str(stationType) + "}")
-                    denm_payload = "{\
-                        \"management\": { \
-                            \"actionID\": {\
-                                \"originatingStationID\":" + str(currClient)+",\
-                                \"sequenceNumber\": 0\
-                            },\
-                            \"detectionTime\": 1626453837.658,\
-                            \"referenceTime\": 1626453837.658,\
-                            \"eventPosition\": {\
-                                \"latitude\":" + str(lat*const) + ",\
-                                \"longitude\": " + str(lng*const) + ",\
-                                \"positionConfidenceEllipse\": {\
-                                    \"semiMajorConfidence\": 0,\
-                                    \"semiMinorConfidence\": 0,\
-                                    \"semiMajorOrientation\": 0\
-                                },\
-                                \"altitude\": {\
-                                    \"altitudeValue\": 0,\
-                                    \"altitudeConfidence\": 1\
-                                }\
-                            },\
-                            \"validityDuration\": 0,\
-                            \"stationType\": " + str(stationType)+"\
+            # if currentLeader.value != currClient:
+            leader = leaderCheck(currClient, mySurr, currentLeader.value)
+            if leader:
+                currentLeader.value = currClient
+                simulatorClient.publish(
+                    topic="leaders", payload="{\"leader\":" + str(currClient) + ",\"stationType\":" + str(stationType) + "}")
+                denm_payload = "{\
+                    \"management\": { \
+                        \"actionID\": {\
+                            \"originatingStationID\":" + str(currClient)+",\
+                            \"sequenceNumber\": 0\
                         },\
-                        \"situation\": {\
-                            \"informationQuality\": 7,\
-                            \"eventType\": {\
-                                \"causeCode\": 100,\
-                                \"subCauseCode\": 14\
+                        \"detectionTime\": 1626453837.658,\
+                        \"referenceTime\": 1626453837.658,\
+                        \"eventPosition\": {\
+                            \"latitude\":" + str(lat*const) + ",\
+                            \"longitude\": " + str(lng*const) + ",\
+                            \"positionConfidenceEllipse\": {\
+                                \"semiMajorConfidence\": 0,\
+                                \"semiMinorConfidence\": 0,\
+                                \"semiMajorOrientation\": 0\
+                            },\
+                            \"altitude\": {\
+                                \"altitudeValue\": 0,\
+                                \"altitudeConfidence\": 1\
                             }\
                         },\
-                        \"alacarte\": { \
-                            \"lanePosition\": 3, \
-                            \"externalTemperature\": 50, \
-                            \"roadWorks\": { \
-                            \"speedLimit\":" + str(velocity + 20) + "}, \
-                            \"positioningSolution\":" + str(3) + ", \
-                            \"stationaryVehicle\": { \
-                            \"numberOfOccupants\": 50} \
-                        } \
-                    }"
-                    # id
-                    # gas
-                    # speed
-                    # check time
-                    #
+                        \"validityDuration\": 0,\
+                        \"stationType\": " + str(stationType)+"\
+                    },\
+                    \"situation\": {\
+                        \"informationQuality\": 7,\
+                        \"eventType\": {\
+                            \"causeCode\": 100,\
+                            \"subCauseCode\": 14\
+                        }\
+                    }\
+                }"
 
-                    vals["speed"] = velocity + 20
-                    vals["checkTime"] = 100
+                vals["speed"] = sync_stats["100"][0]
+                vals["checkTime"] = sync_stats["100"][2]
+                checkTime = sync_stats["100"][2]
+                clientsList[currClient].publish(
+                    topic="vanetza/in/denm", payload=denm_payload)
+                print("I'm the leader: " + str(currClient))
+        else:
+            # Next position calculation
+            velocity = vals["speed"]
+            checkTime = vals["checkTime"]
+            distance_mt = velocity * 0.1
+            curr_distance += distance_mt
+            end_point = geopy.distance.geodesic(
+                meters=distance_mt).destination((lat, lng), bearings[interval])
 
-                    clientsList[currClient].publish(
-                        topic="vanetza/in/denm", payload=denm_payload)
-                    print("I'm the leader: " + str(currClient))
+            lat = end_point.latitude
+            lng = end_point.longitude
 
-        # Next position calculation
-        velocity = vals["speed"]
-        checkTime = vals["checkTime"]
-        distance_mt = velocity * 0.1
-        curr_distance += distance_mt
-        end_point = geopy.distance.geodesic(
-            meters=distance_mt).destination((lat, lng), bearings[interval])
+            msg_payload = "{\"accEngaged\":true,\"acceleration\":0,\"altitude\":800001,\"altitudeConf\":15,\"brakePedal\":true,\"collisionWarning\":true,\"cruiseControl\":true,\"curvature\":1023,\"driveDirection\":\"FORWARD\",\"emergencyBrake\":true,\"gasPedal\":false,\"heading\":90,\"headingConf\":127,\"latitude\":" + \
+                str(lat*const) + ",\"length\":100,\"longitude\":" + \
+                str(lng*const) + ",\"semiMajorConf\":4095,\"semiMajorOrient\":3601,\"semiMinorConf\":4095,\"specialVehicle\":{\"publicTransportContainer\":{\"embarkationStatus\":false}},\"speed\":" + \
+                str(velocity) + ",\"speedConf\":127,\"speedLimiter\":true,\"stationID\":" + \
+                str(currClient) + ",\"stationType\":" + \
+                str(stationType) + ",\"width\":30,\"yawRate\":0}"
+            print("OBU" + str(currClient) + ", vel: " +
+                  str(velocity) + ", time: " + str(checkTime))
+            msgNum += 1
+            clientsList[currClient].publish(
+                topic="vanetza/in/cam", payload=msg_payload)
+            simulatorClient.publish(topic="cams", payload=msg_payload)
 
-        lat = end_point.latitude
-        lng = end_point.longitude
+            if curr_distance >= distances[interval]:
+                interval += 1
+                curr_distance = 0
+                if interval == len(bearings):
+                    break
 
-        msg_payload = "{\"accEngaged\":true,\"acceleration\":0,\"altitude\":800001,\"altitudeConf\":15,\"brakePedal\":true,\"collisionWarning\":true,\"cruiseControl\":true,\"curvature\":1023,\"driveDirection\":\"FORWARD\",\"emergencyBrake\":true,\"gasPedal\":false,\"heading\":90,\"headingConf\":127,\"latitude\":" + \
-            str(lat*const) + ",\"length\":100,\"longitude\":" + \
-            str(lng*const) + ",\"semiMajorConf\":4095,\"semiMajorOrient\":3601,\"semiMinorConf\":4095,\"specialVehicle\":{\"publicTransportContainer\":{\"embarkationStatus\":false}},\"speed\":" + \
-            str(velocity) + ",\"speedConf\":127,\"speedLimiter\":true,\"stationID\":" + \
-            str(currClient) + ",\"stationType\":" + \
-            str(stationType) + ",\"width\":30,\"yawRate\":0}"
-        print("OBU" + str(currClient) + ", vel: " +
-              str(velocity) + ", time: " + str(checkTime))
-        msgNum += 1
-        clientsList[currClient].publish(
-            topic="vanetza/in/cam", payload=msg_payload)
-        simulatorClient.publish(topic="cams", payload=msg_payload)
-
-        if curr_distance >= distances[interval]:
-            interval += 1
-            curr_distance = 0
-            if interval == len(bearings):
-                break
-
-        time.sleep(0.1)
+            time.sleep(0.1)
 
 
 def get_bearing(lat1, lat2, long1, long2):
@@ -499,15 +490,36 @@ def get_bearing(lat1, lat2, long1, long2):
     brng = Geodesic.WGS84.Inverse(lat1, long1, lat2, long2)['WGS84']
     print(brng)
     """
-
     geodesic = pyproj.Geod(ellps='WGS84')
     fwd_azimuth, back_azimuth, distance = geodesic.inv(
         long1, lat1, long2, lat2)
-    print(fwd_azimuth)
-    if (fwd_azimuth == 180):
-        print("Coord1: (" + str(lat1) + "," + str(long1) + ")")
-        print("Coord2: (" + str(lat2) + "," + str(long2) + ")")
     return fwd_azimuth
+
+
+def get_route(pickup_lon, pickup_lat, dropoff_lon, dropoff_lat):
+
+    loc = "{},{};{},{}".format(
+        pickup_lon, pickup_lat, dropoff_lon, dropoff_lat)
+    url = "http://router.project-osrm.org/route/v1/driving/"
+    r = requests.get(url + loc)
+    if r.status_code != 200:
+        return {}
+
+    res = r.json()
+    routes = polyline.decode(res['routes'][0]['geometry'])
+    start_point = [res['waypoints'][0]['location']
+                   [1], res['waypoints'][0]['location'][0]]
+    end_point = [res['waypoints'][1]['location']
+                 [1], res['waypoints'][1]['location'][0]]
+    distance = res['routes'][0]['distance']
+
+    out = {'route': routes,
+           'start_point': start_point,
+           'end_point': end_point,
+           'distance': distance
+           }
+
+    return out
 
 
 def main():
@@ -519,10 +531,15 @@ def main():
 |____/|_|_| |_| |_|\__,_|_|\__,_|\__\___/|_|   
                                                """)
 
+    pickup_lon, pickup_lat, dropoff_lon, dropoff_lat = - \
+        95.98588, 42.48252, -95.24417, 42.47494
+    test_route = get_route(pickup_lon, pickup_lat, dropoff_lon, dropoff_lat)
+
     # get path
-    gpxFile = "route2.gpx"
-    coordsList = parseGPX(gpxFile)
-    finalCoordsList = []
+    #gpxFile = "route2.gpx"
+    #coordsList = parseGPX(gpxFile)
+    coordsList = test_route['route']
+    print(coordsList)
     distances = []
     bearings = []
     for i in range(0, int((len(coordsList)-1))):
@@ -531,49 +548,15 @@ def main():
                 coordsList[i], coordsList[i+1]).m)
             bearings.append(get_bearing(
                 coordsList[i][0], coordsList[i+1][0], coordsList[i][1], coordsList[i+1][1]))
-        # print(bearings[i])
-        # print(distances[i])
 
-    """
-    for i in range(0, len(coordsList)-1):
-        finalCoordsList.append(coordsList[i])
-        finalCoordsList.append(interPoint(coordsList[i], coordsList[i+1]))
-
-    print(finalCoordsList)
-    """
-    """
-    bearings=list()
-    for i in range(len(coordsList)-1):
-        bearings.append(calcBearing(
-            coordsList[i][0], coordsList[i+1][0], coordsList[i][1], coordsList[i+1][1]))
-    """
-    lat = 42.48252
-    lon = -95.98588
     start_point = coordsList[0]
-
-    minutes = 10
-    velocity = 120
-    distance_mt = velocity*0.1
-    bearing = 0
-    totalSeconds = minutes*60
-    coords = [start_point]
-
-    for i in range(1, totalSeconds):
-        for _ in range(10):
-            end_point = geopy.distance.geodesic(
-                meters=distance_mt).destination(coords[len(coords)-1], 90)
-
-            #print(end_point.latitude, end_point.longitude)
-            coords.append(end_point)
-    print(len(coords))
-
     pList = []
     currentLeader = multiprocessing.Value('i', -1)
 
     for i in range(0, 4):
         # OBU Process
         p = multiprocessing.Process(
-            target=startSimul, args=(i, start_point, distances, bearings, 7, surroudingsList[i], currentLeader, valsList[i]))
+            target=startSimul, args=(i, start_point, distances, bearings, 7, surroudingsList[i], currentLeader, valsList[i], sync_stats))
         p.start()
         pList.append(p)
 

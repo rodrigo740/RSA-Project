@@ -22,7 +22,7 @@ const call_time = 200;
 const Maps_Page = () => {
 
   const [markers, setMarkers] = useState([]);
-  const [leader, setLeader] = useState([]);
+  //const [leader, setLeader] = useState([]);
 
   useEffect(() => {
     const interval = setInterval(
@@ -44,11 +44,11 @@ const Maps_Page = () => {
   const getLocations = async () => {
     let response = await fetch(
       `http://localhost:8000/getLocations`);
-      console.log(response)
+      //console.log(response)
     let result = await response.json();
     let all_locations = [];
-    console.log("Results: ")
-    console.log(result)
+    //console.log("Results: ")
+    //console.log(result)
     for (var obu in result) {
       
       all_locations.push(
@@ -60,7 +60,7 @@ const Maps_Page = () => {
         }
       )
     }
-    console.log(all_locations)
+    //console.log(all_locations)
     return all_locations;
   }
 
