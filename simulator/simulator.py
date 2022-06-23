@@ -27,15 +27,15 @@ sync_stats = {
 const = pow(10, 7)
 
 # G1
-vals1 = {"speed": 100, "checkTime": 10, "groupID": -1}
-vals2 = {"speed": 100, "checkTime": 10, "groupID": -1}
-vals3 = {"speed": 100, "checkTime": 10, "groupID": -1}
-vals4 = {"speed": 100, "checkTime": 10, "groupID": -1}
+vals1 = {"speed": 100, "checkTime": 10, "groupID": -1, "group": ""}
+vals2 = {"speed": 100, "checkTime": 10, "groupID": -1, "group": ""}
+vals3 = {"speed": 100, "checkTime": 10, "groupID": -1, "group": ""}
+vals4 = {"speed": 100, "checkTime": 10, "groupID": -1, "group": ""}
 
 # G2
-vals5 = {"speed": 100, "checkTime": 10, "groupID": -1}
-vals6 = {"speed": 100, "checkTime": 10, "groupID": -1}
-vals7 = {"speed": 100, "checkTime": 10, "groupID": -1}
+vals5 = {"speed": 100, "checkTime": 10, "groupID": -1, "group": ""}
+vals6 = {"speed": 100, "checkTime": 10, "groupID": -1, "group": ""}
+vals7 = {"speed": 100, "checkTime": 10, "groupID": -1, "group": ""}
 
 valsList = [vals1, vals2, vals3, vals4, vals5, vals6, vals7]
 
@@ -127,8 +127,8 @@ def on_connectSim(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server.
 def on_messageSim(client, userdata, msg):
     payload = json.loads(msg.payload)
-    if 'leader' in payload:
-        print("leader:" + str(payload["leader"]))
+    # if 'leader' in payload:
+    #    print("leader:" + str(payload["leader"]))
 
 
 # The callback for when the client receives a CONNACK response from the server.
@@ -160,6 +160,8 @@ def on_message2(client, userdata, msg):
         userdata[2]["checkTime"] = sync_stats[str(
             payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][2]
     elif "management" in str_payload:
+        # print(str_payload)
+
         userdata[1][str(payload["management"]["actionID"]
                         ['originatingStationID'])] = ()
         userdata[2]["groupID"] = payload["management"]["actionID"]['originatingStationID']
@@ -191,19 +193,113 @@ def on_message3(client, userdata, msg):
     str_payload = str(payload)
     # if managment in payload == denm received else cam
     if "management" in str_payload:
-        print(str(payload))
+        # not my DENM
+        # print(str(payload))
 
-        userdata[1][str(payload["fields"]["denm"]["management"]["actionID"]
-                        ['originatingStationID'])] = ()
-        userdata[2]["groupID"] = payload["fields"]["denm"]["management"]["actionID"]['originatingStationID']
-        print(payload["fields"]["denm"]["management"]
-              ["actionID"]['originatingStationID'])
-        userdata[2]["speed"] = sync_stats[str(
-            payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][0]
-        userdata[2]["checkTime"] = sync_stats[str(
-            payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][2]
+        causeCode = payload["fields"]["denm"]["situation"]["eventType"]['causeCode']
+        subCauseCode = payload["fields"]["denm"]["situation"]["eventType"]['subCauseCode']
+
+        # Type SET
+        if causeCode == 100:
+            # set
+            if subCauseCode == 1:
+                print("Set denm")
+                userdata[1][str(payload["fields"]["denm"]["management"]["actionID"]
+                                ['originatingStationID'])] = ()
+                userdata[2]["groupID"] = payload["fields"]["denm"]["management"]["actionID"]['originatingStationID']
+                # print(payload["fields"]["denm"]["management"]
+                #      ["actionID"]['originatingStationID'])
+                userdata[2]["speed"] = sync_stats[str(
+                    payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][0]
+                userdata[2]["checkTime"] = sync_stats[str(
+                    payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][2]
+            # set_repeat
+            elif subCauseCode == 2:
+                print("Repeat denm")
+                groupID = userdata[2]["groupID"]
+                # no Group
+                if groupID == -1:
+                    print("Asking to join")
+                    denm_payload = "{\
+                        \"management\": { \
+                            \"actionID\": {\
+                                \"originatingStationID\":" + str(1)+",\
+                                \"sequenceNumber\": 0\
+                            },\
+                            \"detectionTime\": 1626453837.658,\
+                            \"referenceTime\": 1626453837.658,\
+                            \"eventPosition\": {\
+                                \"latitude\":" + str(4063779925) + ",\
+                                \"longitude\": " + str(-86523533) + ",\
+                                \"positionConfidenceEllipse\": {\
+                                    \"semiMajorConfidence\": 0,\
+                                    \"semiMinorConfidence\": 0,\
+                                    \"semiMajorOrientation\": 0\
+                                },\
+                                \"altitude\": {\
+                                    \"altitudeValue\": 0,\
+                                    \"altitudeConfidence\": 1\
+                                }\
+                            },\
+                            \"validityDuration\": 0,\
+                            \"stationType\": " + str(7)+"\
+                        },\
+                        \"situation\": {\
+                            \"informationQuality\": 7,\
+                            \"eventType\": {\
+                                \"causeCode\": 101,\
+                                \"subCauseCode\": 1\
+                            }\
+                        }\
+                    }"
+                    clientsList[1].publish(
+                        topic="vanetza/in/denm", payload=denm_payload)
+        # ask_join
+        elif causeCode == 101:
+            groupID = userdata[2]["groupID"]
+            if subCauseCode == 1:
+                # I am the leader - must respond
+                if groupID == 1:
+                    print("Responding with group: " + userdata[2]["group"])
+                    denm_payload = "{\
+                            \"management\": { \
+                                \"actionID\": {\
+                                    \"originatingStationID\":" + str(1)+",\
+                                    \"sequenceNumber\":" + userdata[2]["group"] + "},\
+                                \"detectionTime\": 1626453837.658,\
+                                \"referenceTime\": 1626453837.658,\
+                                \"eventPosition\": {\
+                                    \"latitude\":" + str(4063779925) + ",\
+                                    \"longitude\": " + str(-86523533) + ",\
+                                    \"positionConfidenceEllipse\": {\
+                                        \"semiMajorConfidence\": 0,\
+                                        \"semiMinorConfidence\": 0,\
+                                        \"semiMajorOrientation\": 0\
+                                    },\
+                                    \"altitude\": {\
+                                        \"altitudeValue\": 0,\
+                                        \"altitudeConfidence\": 1\
+                                    }\
+                                },\
+                                \"validityDuration\": 0,\
+                                \"stationType\": " + str(7)+"\
+                            },\
+                            \"situation\": {\
+                                \"informationQuality\": 7,\
+                                \"eventType\": {\
+                                    \"causeCode\": 101,\
+                                    \"subCauseCode\": 1\
+                                }\
+                            }\
+                        }"
+                    clientsList[1].publish(
+                        topic="vanetza/in/denm", payload=denm_payload)
+
+            elif subCauseCode == 2:
+                print("Join Reply")
     elif "denm" in str_payload:
-        print(str(payload))
+        # print(str(payload))
+        # My DENM
 
         userdata[1][str(payload["management"]["actionID"]
                         ['originatingStationID'])] = ()
@@ -482,16 +578,18 @@ def leaderCheck(currClient, mySurroudings, currentLeader):
 
         return check(myInfo, otherInfo)
     # print("There isn't a leader: " + str(currClient))
-
+    group = ""
     for key in mySurroudings:
         if key != str(currClient):
+            group += key
             otherInfo = mySurroudings[key][len(mySurroudings[key])-1]
             # print("otherInfo: " + str(otherInfo))
 
             res = check(myInfo, otherInfo)
             if not res:
                 return res
-
+    print("Group: " + group)
+    valsList[currClient]["group"] = group
     return res
 
 
@@ -600,14 +698,51 @@ def startSimul(currClient, startPoint, distances, bearings, stationType, mySurr,
 
     while True:
 
-        print("OBU" + str(currClient) + "GroupID: " + str(vals["groupID"]))
+        # print("OBU" + str(currClient) + "GroupID: " + str(vals["groupID"]))
 
-        #print("OBU: " + str(currClient), end="\r")
+        # print("OBU: " + str(currClient), end="\r")
         # print("\n")
 
         if repeatDenm:
-            print("Repeating denm: " + str(currClient))
+            # print("Repeating denm: " + str(currClient))
+            print("Responding with group: " + vals["group"])
             denm_payload = "{\
+                    \"management\": { \
+                        \"actionID\": {\
+                            \"originatingStationID\":" + str(1)+",\
+                            \"sequenceNumber\":" + vals["group"] + "\
+                        },\
+                        \"detectionTime\": 1626453837.658,\
+                        \"referenceTime\": 1626453837.658,\
+                        \"eventPosition\": {\
+                            \"latitude\":" + str(4063779925) + ",\
+                            \"longitude\": " + str(-86523533) + ",\
+                            \"positionConfidenceEllipse\": {\
+                                \"semiMajorConfidence\": 0,\
+                                \"semiMinorConfidence\": 0,\
+                                \"semiMajorOrientation\": 0\
+                            },\
+                            \"altitude\": {\
+                                \"altitudeValue\": 0,\
+                                \"altitudeConfidence\": 1\
+                            }\
+                        },\
+                        \"validityDuration\": 0,\
+                        \"stationType\": " + str(7)+"\
+                    },\
+                    \"situation\": {\
+                        \"informationQuality\": 7,\
+                        \"eventType\": {\
+                            \"causeCode\": 101,\
+                            \"subCauseCode\": 2\
+                        }\
+                    }\
+                }"
+            # print(denm_payload)
+            clientsList[currClient].publish(
+                topic="vanetza/in/denm", payload=denm_payload)
+
+            denm_payload2 = "{\
                     \"management\": { \
                         \"actionID\": {\
                             \"originatingStationID\":" + str(currClient)+",\
@@ -635,61 +770,62 @@ def startSimul(currClient, startPoint, distances, bearings, stationType, mySurr,
                         \"informationQuality\": 7,\
                         \"eventType\": {\
                             \"causeCode\": 100,\
-                            \"subCauseCode\": 14\
+                            \"subCauseCode\": 2\
                         }\
                     }\
                 }"
             clientsList[currClient].publish(
-                topic="vanetza/in/denm", payload=denm_payload)
+                topic="vanetza/in/denm", payload=denm_payload2)
 
         if msgNum == checkTime:
             msgNum = 0
-            # if currentLeader.value != currClient:
-            leader = leaderCheck(currClient, mySurr, currentGroup)
-            if leader:
-                currentGroup = currClient
-                simulatorClient.publish(
-                    topic="leaders", payload="{\"leader\":" + str(currClient) + ",\"stationType\":" + str(stationType) + "}")
-                denm_payload = "{\
-                    \"management\": { \
-                        \"actionID\": {\
-                            \"originatingStationID\":" + str(currClient)+",\
-                            \"sequenceNumber\": 0\
-                        },\
-                        \"detectionTime\": 1626453837.658,\
-                        \"referenceTime\": 1626453837.658,\
-                        \"eventPosition\": {\
-                            \"latitude\":" + str(lat*const) + ",\
-                            \"longitude\": " + str(lng*const) + ",\
-                            \"positionConfidenceEllipse\": {\
-                                \"semiMajorConfidence\": 0,\
-                                \"semiMinorConfidence\": 0,\
-                                \"semiMajorOrientation\": 0\
+            if currentGroup != currClient:
+                leader = leaderCheck(currClient, mySurr, currentGroup)
+                if leader:
+                    currentGroup = currClient
+                    simulatorClient.publish(
+                        topic="leaders", payload="{\"leader\":" + str(currClient) + ",\"stationType\":" + str(stationType) + "}")
+                    # set Group 100 - 1
+                    denm_payload = "{\
+                        \"management\": { \
+                            \"actionID\": {\
+                                \"originatingStationID\":" + str(currClient)+",\
+                                \"sequenceNumber\": 0\
                             },\
-                            \"altitude\": {\
-                                \"altitudeValue\": 0,\
-                                \"altitudeConfidence\": 1\
-                            }\
+                            \"detectionTime\": 1626453837.658,\
+                            \"referenceTime\": 1626453837.658,\
+                            \"eventPosition\": {\
+                                \"latitude\":" + str(lat*const) + ",\
+                                \"longitude\": " + str(lng*const) + ",\
+                                \"positionConfidenceEllipse\": {\
+                                    \"semiMajorConfidence\": 0,\
+                                    \"semiMinorConfidence\": 0,\
+                                    \"semiMajorOrientation\": 0\
+                                },\
+                                \"altitude\": {\
+                                    \"altitudeValue\": 0,\
+                                    \"altitudeConfidence\": 1\
+                                }\
+                            },\
+                            \"validityDuration\": 0,\
+                            \"stationType\": " + str(stationType)+"\
                         },\
-                        \"validityDuration\": 0,\
-                        \"stationType\": " + str(stationType)+"\
-                    },\
-                    \"situation\": {\
-                        \"informationQuality\": 7,\
-                        \"eventType\": {\
-                            \"causeCode\": 100,\
-                            \"subCauseCode\": 14\
+                        \"situation\": {\
+                            \"informationQuality\": 7,\
+                            \"eventType\": {\
+                                \"causeCode\": 100,\
+                                \"subCauseCode\": 1\
+                            }\
                         }\
-                    }\
-                }"
+                    }"
 
-                vals["speed"] = sync_stats["100"][0]
-                vals["checkTime"] = sync_stats["100"][2]
-                checkTime = sync_stats["100"][2]
-                clientsList[currClient].publish(
-                    topic="vanetza/in/denm", payload=denm_payload)
-                print("I'm the leader: " + str(currClient))
-                repeatDenm = True
+                    vals["speed"] = sync_stats["100"][0]
+                    vals["checkTime"] = sync_stats["100"][2]
+                    checkTime = sync_stats["100"][2]
+                    clientsList[currClient].publish(
+                        topic="vanetza/in/denm", payload=denm_payload)
+                    # print("I'm the leader: " + str(currClient))
+                    repeatDenm = True
         else:
             # Next position calculation
             velocity = vals["speed"]
@@ -761,6 +897,11 @@ def get_route(pickup_lon, pickup_lat, dropoff_lon, dropoff_lat):
     return out
 
 
+def reportStatus():
+    while True:
+        print("Status: " + str(vals1), end="\r")
+
+
 def main():
 
     print(r""" ____  _                 _       _             
@@ -778,8 +919,8 @@ def main():
     # get path
     gpxFile = "route2.gpx"
     coordsList = parseGPX(gpxFile)
-    #coordsList = test_route['route']
-    print(coordsList)
+    # coordsList = test_route['route']
+    # print(coordsList)
     distances = []
     bearings = []
     for i in range(0, int((len(coordsList)-1))):
@@ -791,19 +932,25 @@ def main():
 
     start_point = coordsList[0]
     pList = []
-    #currentLeader = multiprocessing.Value('i', -1)
+    # currentLeader = multiprocessing.Value('i', -1)
     currentGroup = -1
 
-    for i in range(0, 4):
+    for i in range(0, 2):
         # OBU Process
         p = multiprocessing.Process(
             target=startSimul, args=(i, start_point, distances, bearings, 7, surroudingsList[i], currentGroup, valsList[i], sync_stats))
         p.start()
         pList.append(p)
 
+    # p = multiprocessing.Process(target=reportStatus, args=())
+    # p.start()
+
     for process in pList:
         process.join()
         print("Process " + str(process.pid) + " has ended")
+
+    # p.join()
+    print("Report status ended")
 
     # both processes finished
     print("Done!")
