@@ -133,6 +133,13 @@ async def getLocations() -> dict:
     data += list(influxClient.query(
         'select LAST(id), latitude, longitude from cams where id = \'3\'').get_points(measurement='cams'))
 
+    data += list(influxClient.query(
+        'select LAST(id), latitude, longitude from cams where id = \'4\'').get_points(measurement='cams'))
+    data += list(influxClient.query(
+        'select LAST(id), latitude, longitude from cams where id = \'5\'').get_points(measurement='cams'))
+    data += list(influxClient.query(
+        'select LAST(id), latitude, longitude from cams where id = \'6\'').get_points(measurement='cams'))
+
     leader = list(influxClient.query(
         'select LAST(id) from leaders').get_points(measurement='leaders'))[0]["last"]
     # print(data)

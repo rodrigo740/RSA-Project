@@ -26,51 +26,88 @@ sync_stats = {
 
 const = pow(10, 7)
 
+# G1
 vals1 = {"speed": 100, "checkTime": 10, "groupID": -1}
 vals2 = {"speed": 100, "checkTime": 10, "groupID": -1}
 vals3 = {"speed": 100, "checkTime": 10, "groupID": -1}
 vals4 = {"speed": 100, "checkTime": 10, "groupID": -1}
-valsList = [vals1, vals2, vals3, vals4]
+
+# G2
+vals5 = {"speed": 100, "checkTime": 10, "groupID": -1}
+vals6 = {"speed": 100, "checkTime": 10, "groupID": -1}
+vals7 = {"speed": 100, "checkTime": 10, "groupID": -1}
+
+valsList = [vals1, vals2, vals3, vals4, vals5, vals6, vals7]
 
 mySurroudings2 = dict()
 mySurroudings3 = dict()
 mySurroudings4 = dict()
 mySurroudings5 = dict()
 
+mySurroudings6 = dict()
+mySurroudings7 = dict()
+mySurroudings8 = dict()
+
+
 denmInfo2 = dict()
 denmInfo3 = dict()
 denmInfo4 = dict()
 denmInfo5 = dict()
+
+denmInfo6 = dict()
+denmInfo7 = dict()
+denmInfo8 = dict()
+
 
 mySurroudings2 = defaultdict(lambda: [], mySurroudings2)
 mySurroudings3 = defaultdict(lambda: [], mySurroudings3)
 mySurroudings4 = defaultdict(lambda: [], mySurroudings4)
 mySurroudings5 = defaultdict(lambda: [], mySurroudings5)
 
+mySurroudings6 = defaultdict(lambda: [], mySurroudings6)
+mySurroudings7 = defaultdict(lambda: [], mySurroudings7)
+mySurroudings8 = defaultdict(lambda: [], mySurroudings8)
+
+
 denmInfo2 = defaultdict(lambda: (), denmInfo2)
 denmInfo3 = defaultdict(lambda: (), denmInfo3)
 denmInfo4 = defaultdict(lambda: (), denmInfo4)
 denmInfo5 = defaultdict(lambda: (), denmInfo5)
 
+denmInfo6 = defaultdict(lambda: (), denmInfo6)
+denmInfo7 = defaultdict(lambda: (), denmInfo7)
+denmInfo8 = defaultdict(lambda: (), denmInfo8)
+
+
 surroudingsList = [mySurroudings2, mySurroudings3,
-                   mySurroudings4, mySurroudings5]
+                   mySurroudings4, mySurroudings5, mySurroudings6, mySurroudings7, mySurroudings8]
 
 
 client2 = mqtt.Client(userdata=(mySurroudings2, denmInfo2, vals1))
 client3 = mqtt.Client(userdata=(mySurroudings3, denmInfo3, vals2))
 client4 = mqtt.Client(userdata=(mySurroudings4, denmInfo4, vals3))
 client5 = mqtt.Client(userdata=(mySurroudings5, denmInfo5, vals4))
-clientsList = [client2, client3, client4, client5]
+
+client6 = mqtt.Client(userdata=(mySurroudings5, denmInfo5, vals5))
+client7 = mqtt.Client(userdata=(mySurroudings5, denmInfo5, vals6))
+client8 = mqtt.Client(userdata=(mySurroudings5, denmInfo5, vals7))
+
+clientsList = [client2, client3, client4, client5, client6, client7, client8]
 
 simulatorClient = mqtt.Client()
 
 
 def handler(signum, frame):
-    print("\nDisconnecting Mqtt client")
+    print("\nDisconnecting Mqtt clients")
     client2.disconnect
     client3.disconnect
     client4.disconnect
     client5.disconnect
+
+    client6.disconnect
+    client7.disconnect
+    client8.disconnect
+
     simulatorClient.disconnect
     exit(1)
 
@@ -117,8 +154,7 @@ def on_message2(client, userdata, msg):
 
         userdata[1][str(payload["fields"]["denm"]["management"]["actionID"]
                         ['originatingStationID'])] = ()
-        userdata[2]["groupID"] = payload["fields"]["denm"]["management"]["actionID"]
-        ['originatingStationID']
+        userdata[2]["groupID"] = payload["fields"]["denm"]["management"]["actionID"]['originatingStationID']
         userdata[2]["speed"] = sync_stats[str(
             payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][0]
         userdata[2]["checkTime"] = sync_stats[str(
@@ -128,8 +164,11 @@ def on_message2(client, userdata, msg):
                         ['originatingStationID'])] = ()
         userdata[2]["groupID"] = payload["management"]["actionID"]['originatingStationID']
     else:
-        pos = (payload["latitude"], payload["longitude"], payload["heading"])
-        userdata[0][str(payload["stationID"])].append(pos)
+        # == -1 means no group as been found
+        if userdata[2]["groupID"] == -1:
+            pos = (payload["latitude"],
+                   payload["longitude"], payload["heading"])
+            userdata[0][str(payload["stationID"])].append(pos)
 
     # print(userdata)
     # print(payload)
@@ -150,25 +189,31 @@ def on_connect3(client, userdata, flags, rc):
 def on_message3(client, userdata, msg):
     payload = json.loads(msg.payload)
     str_payload = str(payload)
-    # print(payload)
     # if managment in payload == denm received else cam
     if "management" in str_payload:
+        print(str(payload))
+
         userdata[1][str(payload["fields"]["denm"]["management"]["actionID"]
                         ['originatingStationID'])] = ()
-        userdata[2]["groupID"] = payload["fields"]["denm"]["management"]["actionID"]
-        ['originatingStationID']
+        userdata[2]["groupID"] = payload["fields"]["denm"]["management"]["actionID"]['originatingStationID']
+        print(payload["fields"]["denm"]["management"]
+              ["actionID"]['originatingStationID'])
         userdata[2]["speed"] = sync_stats[str(
             payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][0]
         userdata[2]["checkTime"] = sync_stats[str(
             payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][2]
     elif "denm" in str_payload:
+        print(str(payload))
+
         userdata[1][str(payload["management"]["actionID"]
                         ['originatingStationID'])] = ()
         userdata[2]["groupID"] = payload["management"]["actionID"]['originatingStationID']
     else:
-
-        pos = (payload["latitude"], payload["longitude"], payload["heading"])
-        userdata[0][str(payload["stationID"])].append(pos)
+        # == -1 means no group as been found
+        if userdata[2]["groupID"] == -1:
+            pos = (payload["latitude"],
+                   payload["longitude"], payload["heading"])
+            userdata[0][str(payload["stationID"])].append(pos)
 
 # The callback for when the client receives a CONNACK response from the server.
 
@@ -191,8 +236,7 @@ def on_message4(client, userdata, msg):
     if "management" in str_payload:
         userdata[1][str(payload["fields"]["denm"]["management"]["actionID"]
                         ['originatingStationID'])] = ()
-        userdata[2]["groupID"] = payload["fields"]["denm"]["management"]["actionID"]
-        ['originatingStationID']
+        userdata[2]["groupID"] = payload["fields"]["denm"]["management"]["actionID"]['originatingStationID']
         userdata[2]["speed"] = sync_stats[str(
             payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][0]
         userdata[2]["checkTime"] = sync_stats[str(
@@ -202,8 +246,11 @@ def on_message4(client, userdata, msg):
                         ['originatingStationID'])] = ()
         userdata[2]["groupID"] = payload["management"]["actionID"]['originatingStationID']
     else:
-        pos = (payload["latitude"], payload["longitude"], payload["heading"])
-        userdata[0][str(payload["stationID"])].append(pos)
+        # == -1 means no group as been found
+        if userdata[2]["groupID"] == -1:
+            pos = (payload["latitude"],
+                   payload["longitude"], payload["heading"])
+            userdata[0][str(payload["stationID"])].append(pos)
 
 
 # The callback for when the client receives a CONNACK response from the server.
@@ -226,6 +273,44 @@ def on_message5(client, userdata, msg):
     if "management" in str_payload:
         userdata[1][str(payload["fields"]["denm"]["management"]["actionID"]
                         ['originatingStationID'])] = ()
+        userdata[2]["groupID"] = payload["fields"]["denm"]["management"]["actionID"]['originatingStationID']
+        userdata[2]["speed"] = sync_stats[str(
+            payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][0]
+        userdata[2]["checkTime"] = sync_stats[str(
+            payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][2]
+    elif "denm" in str_payload:
+        userdata[1][str(payload["management"]["actionID"]
+                        ['originatingStationID'])] = ()
+        userdata[2]["groupID"] = payload["management"]["actionID"]['originatingStationID']
+    else:
+        # == -1 means no group as been found
+        if userdata[2]["groupID"] == -1:
+            pos = (payload["latitude"],
+                   payload["longitude"], payload["heading"])
+            userdata[0][str(payload["stationID"])].append(pos)
+
+# The callback for when the client receives a CONNACK response from the server.
+
+
+def on_connect6(client, userdata, flags, rc):
+    print("Connected with result code "+str(rc))
+    if rc == 0:
+        client6.subscribe("vanetza/out/cam")
+        client6.subscribe("vanetza/in/cam")
+        client6.subscribe("vanetza/in/denm")
+        client6.subscribe("vanetza/out/denm")
+
+# The callback for when a PUBLISH message is received from the server.
+
+
+def on_message6(client, userdata, msg):
+    payload = json.loads(msg.payload)
+    # print(payload)
+    str_payload = str(payload)
+    # if managment in payload == denm received else cam
+    if "management" in str_payload:
+        userdata[1][str(payload["fields"]["denm"]["management"]["actionID"]
+                        ['originatingStationID'])] = ()
         userdata[2]["groupID"] = payload["fields"]["denm"]["management"]["actionID"]
         ['originatingStationID']
         userdata[2]["speed"] = sync_stats[str(
@@ -238,8 +323,91 @@ def on_message5(client, userdata, msg):
         userdata[2]["groupID"] = payload["management"]["actionID"]['originatingStationID']
 
     else:
-        pos = (payload["latitude"], payload["longitude"], payload["heading"])
-        userdata[0][str(payload["stationID"])].append(pos)
+        # == -1 means no group as been found
+        if userdata[2]["groupID"] == -1:
+            pos = (payload["latitude"],
+                   payload["longitude"], payload["heading"])
+            userdata[0][str(payload["stationID"])].append(pos)
+
+# The callback for when the client receives a CONNACK response from the server.
+
+
+def on_connect7(client, userdata, flags, rc):
+    print("Connected with result code "+str(rc))
+    if rc == 0:
+        client7.subscribe("vanetza/out/cam")
+        client7.subscribe("vanetza/in/cam")
+        client7.subscribe("vanetza/in/denm")
+        client7.subscribe("vanetza/out/denm")
+
+# The callback for when a PUBLISH message is received from the server.
+
+
+def on_message7(client, userdata, msg):
+    payload = json.loads(msg.payload)
+    # print(payload)
+    str_payload = str(payload)
+    # if managment in payload == denm received else cam
+    if "management" in str_payload:
+        userdata[1][str(payload["fields"]["denm"]["management"]["actionID"]
+                        ['originatingStationID'])] = ()
+        userdata[2]["groupID"] = payload["fields"]["denm"]["management"]["actionID"]
+        ['originatingStationID']
+        userdata[2]["speed"] = sync_stats[str(
+            payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][0]
+        userdata[2]["checkTime"] = sync_stats[str(
+            payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][2]
+    elif "denm" in str_payload:
+        userdata[1][str(payload["management"]["actionID"]
+                        ['originatingStationID'])] = ()
+        userdata[2]["groupID"] = payload["management"]["actionID"]['originatingStationID']
+
+    else:
+        # == -1 means no group as been found
+        if userdata[2]["groupID"] == -1:
+            pos = (payload["latitude"],
+                   payload["longitude"], payload["heading"])
+            userdata[0][str(payload["stationID"])].append(pos)
+
+# The callback for when the client receives a CONNACK response from the server.
+
+
+def on_connect8(client, userdata, flags, rc):
+    print("Connected with result code "+str(rc))
+    if rc == 0:
+        client8.subscribe("vanetza/out/cam")
+        client8.subscribe("vanetza/in/cam")
+        client8.subscribe("vanetza/in/denm")
+        client8.subscribe("vanetza/out/denm")
+
+# The callback for when a PUBLISH message is received from the server.
+
+
+def on_message8(client, userdata, msg):
+    payload = json.loads(msg.payload)
+    # print(payload)
+    str_payload = str(payload)
+    # if managment in payload == denm received else cam
+    if "management" in str_payload:
+        userdata[1][str(payload["fields"]["denm"]["management"]["actionID"]
+                        ['originatingStationID'])] = ()
+        userdata[2]["groupID"] = payload["fields"]["denm"]["management"]["actionID"]
+        ['originatingStationID']
+        userdata[2]["speed"] = sync_stats[str(
+            payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][0]
+        userdata[2]["checkTime"] = sync_stats[str(
+            payload["fields"]["denm"]["situation"]["eventType"]['causeCode'])][2]
+    elif "denm" in str_payload:
+        userdata[1][str(payload["management"]["actionID"]
+                        ['originatingStationID'])] = ()
+        userdata[2]["groupID"] = payload["management"]["actionID"]['originatingStationID']
+
+    else:
+        # == -1 means no group as been found
+        if userdata[2]["groupID"] == -1:
+            pos = (payload["latitude"],
+                   payload["longitude"], payload["heading"])
+            userdata[0][str(payload["stationID"])].append(pos)
 
 
 def parseGPX(gpxFile):
@@ -327,7 +495,7 @@ def leaderCheck(currClient, mySurroudings, currentLeader):
     return res
 
 
-def startSimul(currClient, startPoint, distances, bearings, stationType, mySurr, currentLeader, vals, sync_stats):
+def startSimul(currClient, startPoint, distances, bearings, stationType, mySurr, currentGroup, vals, sync_stats):
     print("Client: " + str(currClient) + " has started the simulation")
 
     # Connecting to the broker
@@ -363,6 +531,30 @@ def startSimul(currClient, startPoint, distances, bearings, stationType, mySurr,
 
         client5.connect("192.168.98.50")
         client5.loop_start()
+    elif currClient == 4:
+
+        # OBU4 client
+        client6.on_connect = on_connect6
+        client6.on_message = on_message6
+
+        client6.connect("192.168.98.60")
+        client6.loop_start()
+    elif currClient == 5:
+
+        # OBU4 client
+        client7.on_connect = on_connect7
+        client7.on_message = on_message7
+
+        client7.connect("192.168.98.70")
+        client7.loop_start()
+    elif currClient == 6:
+
+        # OBU4 client
+        client8.on_connect = on_connect8
+        client8.on_message = on_message8
+
+        client8.connect("192.168.98.80")
+        client8.loop_start()
 
     # Wait
     if currClient == 1:
@@ -371,7 +563,14 @@ def startSimul(currClient, startPoint, distances, bearings, stationType, mySurr,
         time.sleep(2)
     elif currClient == 3:
         time.sleep(3)
+    if currClient == 4:
+        time.sleep(4)
+    elif currClient == 5:
+        time.sleep(5)
+    elif currClient == 6:
+        time.sleep(6)
 
+    repeatDenm = False
     interval = 0
     curr_distance = 0
     msgNum = 0
@@ -401,15 +600,54 @@ def startSimul(currClient, startPoint, distances, bearings, stationType, mySurr,
 
     while True:
 
+        print("OBU" + str(currClient) + "GroupID: " + str(vals["groupID"]))
+
         #print("OBU: " + str(currClient), end="\r")
         # print("\n")
+
+        if repeatDenm:
+            print("Repeating denm: " + str(currClient))
+            denm_payload = "{\
+                    \"management\": { \
+                        \"actionID\": {\
+                            \"originatingStationID\":" + str(currClient)+",\
+                            \"sequenceNumber\": 0\
+                        },\
+                        \"detectionTime\": 1626453837.658,\
+                        \"referenceTime\": 1626453837.658,\
+                        \"eventPosition\": {\
+                            \"latitude\":" + str(lat*const) + ",\
+                            \"longitude\": " + str(lng*const) + ",\
+                            \"positionConfidenceEllipse\": {\
+                                \"semiMajorConfidence\": 0,\
+                                \"semiMinorConfidence\": 0,\
+                                \"semiMajorOrientation\": 0\
+                            },\
+                            \"altitude\": {\
+                                \"altitudeValue\": 0,\
+                                \"altitudeConfidence\": 1\
+                            }\
+                        },\
+                        \"validityDuration\": 0,\
+                        \"stationType\": " + str(stationType)+"\
+                    },\
+                    \"situation\": {\
+                        \"informationQuality\": 7,\
+                        \"eventType\": {\
+                            \"causeCode\": 100,\
+                            \"subCauseCode\": 14\
+                        }\
+                    }\
+                }"
+            clientsList[currClient].publish(
+                topic="vanetza/in/denm", payload=denm_payload)
 
         if msgNum == checkTime:
             msgNum = 0
             # if currentLeader.value != currClient:
-            leader = leaderCheck(currClient, mySurr, currentLeader.value)
+            leader = leaderCheck(currClient, mySurr, currentGroup)
             if leader:
-                currentLeader.value = currClient
+                currentGroup = currClient
                 simulatorClient.publish(
                     topic="leaders", payload="{\"leader\":" + str(currClient) + ",\"stationType\":" + str(stationType) + "}")
                 denm_payload = "{\
@@ -451,6 +689,7 @@ def startSimul(currClient, startPoint, distances, bearings, stationType, mySurr,
                 clientsList[currClient].publish(
                     topic="vanetza/in/denm", payload=denm_payload)
                 print("I'm the leader: " + str(currClient))
+                repeatDenm = True
         else:
             # Next position calculation
             velocity = vals["speed"]
@@ -469,8 +708,8 @@ def startSimul(currClient, startPoint, distances, bearings, stationType, mySurr,
                 str(velocity) + ",\"speedConf\":127,\"speedLimiter\":true,\"stationID\":" + \
                 str(currClient) + ",\"stationType\":" + \
                 str(stationType) + ",\"width\":30,\"yawRate\":0}"
-            print("OBU" + str(currClient) + ", vel: " +
-                  str(velocity) + ", time: " + str(checkTime))
+            # print("OBU" + str(currClient) + ", vel: " +
+            #      str(velocity) + ", time: " + str(checkTime))
             msgNum += 1
             clientsList[currClient].publish(
                 topic="vanetza/in/cam", payload=msg_payload)
@@ -530,15 +769,16 @@ def main():
  ___) | | | | | | | |_| | | (_| | || (_) | |   
 |____/|_|_| |_| |_|\__,_|_|\__,_|\__\___/|_|   
                                                """)
-
+    """
     pickup_lon, pickup_lat, dropoff_lon, dropoff_lat = - \
         95.98588, 42.48252, -95.24417, 42.47494
     test_route = get_route(pickup_lon, pickup_lat, dropoff_lon, dropoff_lat)
+    """
 
     # get path
-    #gpxFile = "route2.gpx"
-    #coordsList = parseGPX(gpxFile)
-    coordsList = test_route['route']
+    gpxFile = "route2.gpx"
+    coordsList = parseGPX(gpxFile)
+    #coordsList = test_route['route']
     print(coordsList)
     distances = []
     bearings = []
@@ -551,12 +791,13 @@ def main():
 
     start_point = coordsList[0]
     pList = []
-    currentLeader = multiprocessing.Value('i', -1)
+    #currentLeader = multiprocessing.Value('i', -1)
+    currentGroup = -1
 
     for i in range(0, 4):
         # OBU Process
         p = multiprocessing.Process(
-            target=startSimul, args=(i, start_point, distances, bearings, 7, surroudingsList[i], currentLeader, valsList[i], sync_stats))
+            target=startSimul, args=(i, start_point, distances, bearings, 7, surroudingsList[i], currentGroup, valsList[i], sync_stats))
         p.start()
         pList.append(p)
 
