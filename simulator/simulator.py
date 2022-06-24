@@ -1291,7 +1291,6 @@ def startSimul(currClient, startPoint, distances, bearings, stationType, mySurr,
             print("Group of 1: " + str(vals["group"]))
         if currClient == 2:
             print("Group of 2: " + str(vals["group"]))
-
         if currClient == 3:
             print("Group of 3: " + str(vals["group"]))
 
