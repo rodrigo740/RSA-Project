@@ -53,8 +53,8 @@ const Maps_Page = () => {
       
       all_locations.push(
         {
-          lat: result[obu]["lat"]/10000000,
-          lng: result[obu]["lng"]/10000000,
+          lat: Number(result[obu]["lat"]),
+          lng: Number(result[obu]["lng"]),
           id: result[obu]["id"],
           leader: result[obu]["leader"]
         }
