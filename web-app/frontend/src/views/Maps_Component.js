@@ -14,9 +14,9 @@ const MapWithAMarker = withScriptjs(
 
       {props.markers.map((props, index) => {
         //console.log(props.leader)
-        if (props.leader == "0") {
+        if (props.leader === "0") {
           return (
-            <Marker position={{ lat: props.lat, lng: props.lng }}
+            <Marker position={{ lat: props.lat, lng: props.lng}}
               key={index}
               id={index}
               icon={iconBase + 'icon15.png'}
@@ -28,7 +28,7 @@ const MapWithAMarker = withScriptjs(
           )
         } else {
           return (
-            <Marker position={{ lat: props.lat, lng: props.lng }}
+            <Marker position={{ lat: props.lat, lng: props.lng}}
               key={index}
               id={index}
               icon={iconBase + 'icon62.png'}
