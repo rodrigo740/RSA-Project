@@ -26,8 +26,7 @@ influxClient.get_list_database()
 influxClient.switch_database('mydb')
 
 origins = [
-    "http://localhost:3000",
-    "localhost:3000"
+    "*"
 ]
 
 app.add_middleware(
@@ -66,7 +65,8 @@ async def message(client, topic, payload, qos, properties):
             "fields": {
                 'latitude': str(payload["latitude"]),
                 'longitude': str(payload["longitude"]),
-                'id': str(payload["stationID"])
+                'id': str(payload["stationID"]),
+                'speed': str(payload["speed"])
             }
         }
         json_payload.append(data)
@@ -125,20 +125,20 @@ async def getLeaders() -> dict:
 async def getLocations() -> dict:
 
     data = list(influxClient.query(
-        'select LAST(id), latitude, longitude from cams where id = \'0\'').get_points(measurement='cams'))
+        'select LAST(id), latitude, longitude, speed from cams where id = \'0\'').get_points(measurement='cams'))
     data += list(influxClient.query(
-        'select LAST(id), latitude, longitude from cams where id = \'1\'').get_points(measurement='cams'))
+        'select LAST(id), latitude, longitude, speed from cams where id = \'1\'').get_points(measurement='cams'))
     data += list(influxClient.query(
-        'select LAST(id), latitude, longitude from cams where id = \'2\'').get_points(measurement='cams'))
+        'select LAST(id), latitude, longitude, speed from cams where id = \'2\'').get_points(measurement='cams'))
     data += list(influxClient.query(
-        'select LAST(id), latitude, longitude from cams where id = \'3\'').get_points(measurement='cams'))
+        'select LAST(id), latitude, longitude, speed from cams where id = \'3\'').get_points(measurement='cams'))
 
     data += list(influxClient.query(
-        'select LAST(id), latitude, longitude from cams where id = \'4\'').get_points(measurement='cams'))
+        'select LAST(id), latitude, longitude, speed from cams where id = \'4\'').get_points(measurement='cams'))
     data += list(influxClient.query(
-        'select LAST(id), latitude, longitude from cams where id = \'5\'').get_points(measurement='cams'))
+        'select LAST(id), latitude, longitude, speed from cams where id = \'5\'').get_points(measurement='cams'))
     data += list(influxClient.query(
-        'select LAST(id), latitude, longitude from cams where id = \'6\'').get_points(measurement='cams'))
+        'select LAST(id), latitude, longitude, speed from cams where id = \'6\'').get_points(measurement='cams'))
 
     leader = list(influxClient.query(
         'select LAST(id) from leaders').get_points(measurement='leaders'))[0]["last"]
@@ -147,10 +147,10 @@ async def getLocations() -> dict:
     for item in data:
         if leader == item["last"]:
             dict["obu" + str(item["last"])
-                 ] = {"lat": item["latitude"], "lng": item["longitude"], "id": item["last"], "leader": "1"}
+                 ] = {"lat": item["latitude"], "lng": item["longitude"], "id": item["last"], "spd": item["speed"], "leader": "1"}
         else:
             dict["obu" + str(item["last"])
-                 ] = {"lat": item["latitude"], "lng": item["longitude"], "id": item["last"], "leader": "0"}
+                 ] = {"lat": item["latitude"], "lng": item["longitude"], "id": item["last"], "spd": item["speed"], "leader": "0"}
 
     # print(dict)
     return dict
