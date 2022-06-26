@@ -1,5 +1,3 @@
-from email.policy import default
-from turtle import speed
 from anyio import Any
 import paho.mqtt.client as mqtt
 import signal
@@ -283,14 +281,23 @@ def on_message2(client, userdata, msg):
             if subCauseCode == 1:
                 print("Merge Request")
                 myLocation = userdata[2]["location"]
-                myLocation = list(myLocation).append(90)
-                myLocation = tuple(myLocation)
+                #print("MY LOCATION2: " + str(myLocation))
+                aux = list(myLocation)
+                #print("LISTED: " + str(aux))
+                aux.append(90)
+                #print("APPENDED: " + str(aux))
+                #myLocation = list(myLocation).append(90)
+                myLocation = tuple(aux)
+                """
                 res = check(myLocation, (payload["fields"]["denm"]["management"]["eventPosition"]
                             ["latitude"], payload["fields"]["denm"]["management"]["eventPosition"]["longitude"]))
+                """
+
+                res = check(myLocation, (42.48252, -95.98588))
                 if res:
-                    #print("Must reply to merge")
+                    print("Must reply to merge")
                     reqID = payload["fields"]["denm"]["management"]["actionID"]['originatingStationID']
-                    userdata[2]["group"] = userdata[2]["group"] + reqID
+                    userdata[2]["group"] = userdata[2]["group"] + str(reqID)
                     denm_payload = "{\
                             \"management\": { \
                                 \"actionID\": {\
@@ -315,7 +322,7 @@ def on_message2(client, userdata, msg):
                                 \"stationType\": " + str(7)+"\
                             },\
                             \"situation\": {\
-                                \"informationQuality\":" + reqID + ",\
+                                \"informationQuality\":" + str(reqID) + ",\
                                 \"eventType\": {\
                                     \"causeCode\": 102,\
                                     \"subCauseCode\": 2\
@@ -476,6 +483,7 @@ def on_message3(client, userdata, msg):
                     valsList[1]["group"] = payload["fields"]["denm"]["management"]["actionID"]['sequenceNumber']
         elif causeCode == 102:
             if subCauseCode == 1:
+                pass
                 #print("Merge Request")
                 myLocation = userdata[2]["location"]
                 res = check(myLocation, (payload["fields"]["denm"]["management"]["eventPosition"]
@@ -621,7 +629,7 @@ def on_message4(client, userdata, msg):
                     # update group
                     if userdata[2]["group"] != payload["fields"]["denm"]["management"]["actionID"]['sequenceNumber']:
                         userdata[2]["group"] = payload["fields"]["denm"]["management"]["actionID"]['sequenceNumber']
-                else:
+                elif userdata[2]["overlord"] == "":
                     print("Asking to merge")
                     denm_payload = "{\
                         \"management\": { \
@@ -710,7 +718,11 @@ def on_message4(client, userdata, msg):
         elif causeCode == 102:
             if subCauseCode == 1:
                 #print("Merge Request")
+                print("Merge Request")
                 myLocation = userdata[2]["location"]
+                print("MY LOCATION4: " + str(myLocation))
+                myLocation = list(myLocation).append(90)
+                myLocation = tuple(myLocation)
                 res = check(myLocation, (payload["fields"]["denm"]["management"]["eventPosition"]
                             ["latitude"], payload["fields"]["denm"]["management"]["eventPosition"]["longitude"]))
                 if res:
@@ -751,8 +763,9 @@ def on_message4(client, userdata, msg):
                     clientsList[2].publish(
                         topic="vanetza/in/denm", payload=denm_payload)
             elif subCauseCode == 2:
-                #print("Got a merge reply")
+                print("Got a merge reply")
                 userdata[2]["overlord"] = payload["fields"]["denm"]["management"]["actionID"]['originatingStationID']
+                print("My overlord: " + str(userdata[2]["overlord"]))
 
     elif "management" in str_payload:
         # print(str(payload))
@@ -908,7 +921,9 @@ def on_message5(client, userdata, msg):
                     valsList[2]["group"] = payload["fields"]["denm"]["management"]["actionID"]['sequenceNumber']
         elif causeCode == 102:
             if subCauseCode == 1:
-                #print("Merge Request")
+                pass
+                """
+                print("Merge Requestttttttttttttttttttttttts")
                 myLocation = userdata[2]["location"]
                 myLocation = list(myLocation).append(90)
                 myLocation = tuple(myLocation)
@@ -951,6 +966,7 @@ def on_message5(client, userdata, msg):
                         }"
                     clientsList[3].publish(
                         topic="vanetza/in/denm", payload=denm_payload)
+                """
             elif subCauseCode == 2:
                 #print("Got a merge reply")
                 userdata[2]["overlord"] = payload["fields"]["denm"]["management"]["actionID"]['originatingStationID']
@@ -1284,7 +1300,7 @@ def startSimul(currClient, startPoint, distances, bearings, stationType, mySurr,
     time.sleep(0.1)
 
     while True:
-
+        """
         if currClient == 0:
             print("Group of 0: " + str(vals["group"]))
         if currClient == 1:
@@ -1293,6 +1309,7 @@ def startSimul(currClient, startPoint, distances, bearings, stationType, mySurr,
             print("Group of 2: " + str(vals["group"]))
         if currClient == 3:
             print("Group of 3: " + str(vals["group"]))
+        """
 
         # print("OBU" + str(currClient) + "GroupID: " + str(vals["groupID"]))
 
@@ -1510,17 +1527,16 @@ def main():
  ___) | | | | | | | |_| | | (_| | || (_) | |   
 |____/|_|_| |_| |_|\__,_|_|\__,_|\__\___/|_|   
                                                """)
-    """
+
     pickup_lon, pickup_lat, dropoff_lon, dropoff_lat = - \
         95.98588, 42.48252, -95.24417, 42.47494
     test_route = get_route(pickup_lon, pickup_lat, dropoff_lon, dropoff_lat)
-    """
 
     # get path
-    gpxFile = "route2.gpx"
-    coordsList = parseGPX(gpxFile)
-    # coordsList = test_route['route']
-    # print(coordsList)
+    #gpxFile = "route2.gpx"
+    #coordsList = parseGPX(gpxFile)
+    coordsList = test_route['route']
+    print(coordsList)
     distances = []
     bearings = []
     for i in range(0, int((len(coordsList)-1))):
