@@ -1258,7 +1258,7 @@ def startSimul(currClient, startPoint, distances, bearings, stationType, mySurr,
         time.sleep(2)
         client4.connect("192.168.98.40")
         client4.loop_start()
-        print("\nsleep done\n")
+        #print("\nsleep done\n")
 
     elif currClient == 3:
         time.sleep(3)
@@ -1516,7 +1516,8 @@ def get_route(pickup_lon, pickup_lat, dropoff_lon, dropoff_lat):
 
 def reportStatus():
     while True:
-        print("Status: " + str(vals1), end="\r")
+
+        print("Status: " + str(valsList[0]), end="\r")
 
 
 def main():
@@ -1592,8 +1593,8 @@ def main():
         p.start()
         pList.append(p)
 
-    # p = multiprocessing.Process(target=reportStatus, args=())
-    # p.start()
+    p = multiprocessing.Process(target=reportStatus, args=())
+    p.start()
 
     for process in pList:
         process.join()
